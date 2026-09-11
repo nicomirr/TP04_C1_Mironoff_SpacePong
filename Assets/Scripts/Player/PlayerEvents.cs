@@ -19,7 +19,7 @@ namespace Game.Player
 
         public static event Action<PlayerType, float> OnPlayerSizeChangeRequested;
 
-        public static event Action<PlayerType, float> OnPlayerSizeUpdated;
+        public static event Action<PlayerType, float> OnPlayerSizeUpdatedInSettings;
 
 
         public static void RaisePlayerInitialized(PlayerType playerType)
@@ -57,9 +57,9 @@ namespace Game.Player
             OnPlayerSizeChangeRequested?.Invoke(playerType, scale);
         }
 
-        public static void RaisePlayerSizeUpdated(PlayerType playerType, float scale)
+        public static void RaisePlayerSizeUpdatedWithSettings(PlayerType playerType, float scale)
         {
-            OnPlayerSizeUpdated?.Invoke(playerType, scale);
+            OnPlayerSizeUpdatedInSettings?.Invoke(playerType, scale);
         }
 
     }

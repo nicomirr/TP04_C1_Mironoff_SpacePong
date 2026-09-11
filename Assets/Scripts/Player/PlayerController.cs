@@ -45,8 +45,8 @@ namespace Game.Player
             _playerInputs.Deinitialize();
 
             PlayerEvents.OnPlayerMovementSpeedUpdated -= TryChangeMovementSpeed;
-            PlayerEvents.OnPlayerColorUpdatedInSettings -= TryChangeColor;
-            PlayerEvents.OnPlayerSizeUpdated -= TryChangeSize;
+            PlayerEvents.OnPlayerColorUpdatedInSettings -= TryChangeColorWithSettings;
+            PlayerEvents.OnPlayerSizeUpdatedInSettings -= TryChangeSizeWithSettings;
             GameplayEvents.OnPaddleGrowthActivated -= TryActivatePaddleGrowth;
         }
 
@@ -70,8 +70,8 @@ namespace Game.Player
             _rb.position = configuration.InitialPosition;
 
             PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
-            PlayerEvents.OnPlayerColorUpdatedInSettings += TryChangeColor;
-            PlayerEvents.OnPlayerSizeUpdated += TryChangeSize;
+            PlayerEvents.OnPlayerColorUpdatedInSettings += TryChangeColorWithSettings;
+            PlayerEvents.OnPlayerSizeUpdatedInSettings += TryChangeSizeWithSettings;
             GameplayEvents.OnPaddleGrowthActivated += TryActivatePaddleGrowth;
         }
 
@@ -99,7 +99,7 @@ namespace Game.Player
             }            
             else if(!_movementLimitReached)
             {
-                Color32? color = _colorChanger.TryResetColor();                                
+                Color32? color = _colorChanger.HandleExitLimitsCollision();                                
             }
 
             if (_playerInputs.ChangeColorReleased)
@@ -117,18 +117,18 @@ namespace Game.Player
             _movement.UpdateSpeed(speed);
         }
 
-        private void TryChangeColor(PlayerType player, Color32 color)
+        private void TryChangeColorWithSettings(PlayerType player, Color32 color)
         {
             if (_playerInputs.PlayerType != player) return;
             
-            _colorChanger.ChangeColor(color);
+            _colorChanger.ChangeColorWithSettings(color);
         }
 
-        private void TryChangeSize(PlayerType player, float scale)
+        private void TryChangeSizeWithSettings(PlayerType player, float scale)
         {
             if (_playerInputs.PlayerType != player) return;
 
-            _paddleScaler.ChangeScale(scale);
+            _paddleScaler.ChangeScaleWithSettings(scale);
         }
 
         private void TryActivatePaddleGrowth(PlayerType player, float time, float growthFactor)

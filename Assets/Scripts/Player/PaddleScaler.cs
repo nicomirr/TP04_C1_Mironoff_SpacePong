@@ -18,7 +18,7 @@ namespace Game.Player
             _baseYScale = _paddleTransform.localScale.y;
         }
         
-        public void ChangeScale(float yScale)
+        public void ChangeScaleWithSettings(float yScale)
         {
             _baseYScale = yScale;
             ApplyScale();

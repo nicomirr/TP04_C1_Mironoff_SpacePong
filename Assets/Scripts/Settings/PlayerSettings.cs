@@ -130,7 +130,7 @@ namespace Game.Settings
 
         private void SendPlayerScale(PlayerType playerType)
         {
-            PlayerEvents.RaisePlayerSizeUpdated(playerType, _yScales[playerType]);
+            PlayerEvents.RaisePlayerSizeUpdatedWithSettings(playerType, _yScales[playerType]);
         }
 
         private void SendUIScaleValue(PlayerType playerType)
