@@ -1,7 +1,7 @@
 using UnityEngine;
 using Game.Gameplay;
 using Game.Player.Configuration;
-using System;
+using Game.Ball;
 
 namespace Game.Player
 {
@@ -38,6 +38,14 @@ namespace Game.Player
         {
             HandleRotation();       
             HandleColorChange();
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.TryGetComponent<BallController>(out var _))
+            {
+                RandomizePaddleColor();
+            }
         }
 
         private void OnDestroy()
@@ -95,20 +103,24 @@ namespace Game.Player
         {
             if(_movementLimitReached)
             {
-                Color32 color = _colorChanger.HandleCollidingWithLimits();
+                _colorChanger.HandleCollidingWithLimits();
             }            
-            else if(!_movementLimitReached)
+            else 
             {
-                Color32? color = _colorChanger.HandleExitLimitsCollision();                                
+                _colorChanger.HandleExitLimitsCollision();                                
             }
 
             if (_playerInputs.ChangeColorReleased)
             {
-                Color32 color = _colorChanger.RandomizeColor();
-
-                PlayerEvents.RaisePlayerColorChangedInGameplay(_playerInputs.PlayerType, color);
+                RandomizePaddleColor();
             }
         }        
+
+        private void RandomizePaddleColor()
+        {
+            Color32 color = _colorChanger.RandomizeColor();
+            PlayerEvents.RaisePlayerColorChangedInGameplay(_playerInputs.PlayerType, color);
+        }
 
         private void TryChangeMovementSpeed(PlayerType player, float speed)
         {
@@ -136,15 +148,7 @@ namespace Game.Player
             if (_playerInputs.PlayerType != player) return;
 
             _paddleScaler.EnablePaddleGrowth(time, growthFactor);
-        }
-
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            Color32 color = _colorChanger.RandomizeColor();
-
-            PlayerEvents.RaisePlayerColorChangedInGameplay(_playerInputs.PlayerType, color);
-        }
-
+        }        
     }
 }
 

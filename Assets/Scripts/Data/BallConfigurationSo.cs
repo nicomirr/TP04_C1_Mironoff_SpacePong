@@ -11,8 +11,11 @@ namespace Game.Data
         [SerializeField] private float _launchDelay;
         public float LaunchDelay => _launchDelay;
 
-        [SerializeField] private float _speedIncreasePerHit;
-        public float SpeedIncreasePerHit => _speedIncreasePerHit;
+        [SerializeField] private float _speedIncrease;
+        public float SpeedIncrease => _speedIncrease;
+
+        [SerializeField] private int _hitsRequiredToSpeedUp;
+        public int HitsRequiredToSpeedUp => _hitsRequiredToSpeedUp;
 
         [SerializeField] private float _initialSpeed;
         public float InitialSpeed => _initialSpeed;

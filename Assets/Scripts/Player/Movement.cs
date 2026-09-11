@@ -19,12 +19,12 @@ namespace Game.Player
         {           
             Vector2 targetPosition = _rb.position + direction.normalized * (_movementSpeed * Time.fixedDeltaTime);
 
-            bool limitReached;
+            bool movementBlocked;
             
-            targetPosition = _checkLimits.ClampFinalPosition(targetPosition, out limitReached);
+            targetPosition = _checkLimits.ClampFinalPosition(targetPosition, out movementBlocked);
             _rb.MovePosition(targetPosition);
 
-            return limitReached;
+            return movementBlocked;
         }
 
         public void UpdateSpeed(float movementSpeed)

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Game.Ball
 {
-    public class BallDirectionCorrector : MonoBehaviour
+    public class BallDirectionCorrector 
     {
-        private float _minHorizontalXDirection;
-        private float _maxHorizontalXDirection;
+        private readonly float _minHorizontalXDirection;
+        private readonly float _maxHorizontalXDirection;
 
-        public void Initialize(BallConfigurationSo data)
+        public BallDirectionCorrector(BallConfigurationSo data)
         {
             _minHorizontalXDirection = data.MinHorizontalXDirection;
             _maxHorizontalXDirection = data.MaxHorizontalXdirection;

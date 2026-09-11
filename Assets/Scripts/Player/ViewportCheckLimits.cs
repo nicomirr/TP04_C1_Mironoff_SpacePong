@@ -5,6 +5,8 @@ namespace Game.Player
 {
     public class ViewportCheckLimits
     {
+        private const float TOLERANCE = 0.00001f;
+
         private Camera _camera;
 
         private ViewportLimitsSo _viewportLimits;
@@ -16,9 +18,11 @@ namespace Game.Player
             _viewportLimits = viewportLimits;
         }
 
-        public Vector2 ClampFinalPosition(Vector2 position, out bool limitReached)
+        public Vector2 ClampFinalPosition(Vector2 position, out bool movementBlocked)
         {
             Vector3 viewportPointPosition = _camera.WorldToViewportPoint(position);
+
+            Vector3 unclampedPosition = viewportPointPosition;
 
             viewportPointPosition.x = Mathf.Clamp(viewportPointPosition.x,
                 _viewportLimits.MinX, _viewportLimits.MaxX);
@@ -26,8 +30,8 @@ namespace Game.Player
             viewportPointPosition.y = Mathf.Clamp(viewportPointPosition.y,
                 _viewportLimits.MinY, _viewportLimits.MaxY);
 
-            limitReached = viewportPointPosition.x == ViewportLimits.MinX || viewportPointPosition.x == ViewportLimits.MaxX ||
-                viewportPointPosition.y == ViewportLimits.MinY || viewportPointPosition.y == ViewportLimits.MaxY;
+            movementBlocked = Mathf.Abs(unclampedPosition.x - viewportPointPosition.x) > TOLERANCE ||
+                Mathf.Abs(unclampedPosition.y - viewportPointPosition.y) > TOLERANCE;
 
             return _camera.ViewportToWorldPoint(viewportPointPosition);
         }

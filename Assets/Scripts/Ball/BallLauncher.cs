@@ -1,21 +1,20 @@
-using System.Collections;
 using UnityEngine;
-using Game.Gameplay;
+using System.Collections;
 using Game.Data;
 
 namespace Game.Ball
 {
-    public class BallLauncher : MonoBehaviour
+    public class BallLauncher 
     {
-        private float _launchForce;
-        private float _launchDelay;
+        private readonly float _launchForce;
+        private readonly float _launchDelay;
 
-        private Rigidbody2D _rb;
+        private readonly Rigidbody2D _rb;
 
         private bool _isLaunched;
         public bool IsLaunched => _isLaunched;
 
-        public void Initialize(Rigidbody2D rb, BallConfigurationSo data)
+        public BallLauncher(Rigidbody2D rb, BallConfigurationSo data)
         {
             _rb = rb;
 
@@ -35,7 +34,6 @@ namespace Game.Ball
             _rb.AddForce(direction * _launchForce, ForceMode2D.Impulse);
 
             _isLaunched = true;
-            GameplayEvents.RaiseRoundStarted();
         }
     }
 }
