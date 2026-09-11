@@ -15,4 +15,4 @@ MonoBehaviour:
   _mixX: 0.05
   _maxX: 0.35
   _minY: 0.1
-  _maxY: 0.9
+  _maxY: 0.75

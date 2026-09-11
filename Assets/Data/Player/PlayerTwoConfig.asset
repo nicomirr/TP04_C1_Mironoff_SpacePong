@@ -15,7 +15,7 @@ MonoBehaviour:
   _playerType: 1
   _viewPortLimits: {fileID: 11400000, guid: 4419560f481afd1419281e63c032ae04, type: 2}
   _rotation: 10
-  _initialPosition: {x: 7.6, y: 0}
+  _initialPosition: {x: 7.6, y: -0.4}
   _collidingWithLimitsColor:
     serializedVersion: 2
     rgba: 4283453520
