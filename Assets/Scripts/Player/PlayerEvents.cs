@@ -13,9 +13,9 @@ namespace Game.Player
 
         public static event Action<PlayerType, Color32> OnPlayerColorChangeRequested;
 
-        public static event Action<PlayerType, Color32> OnPlayerColorUpdated;
+        public static event Action<PlayerType, Color32> OnPlayerColorUpdatedInSettings;
 
-        public static event Action<PlayerType, Color32> OnPlayerColorRandomized;
+        public static event Action<PlayerType, Color32> OnPlayerColorChangedInGameplay;
 
         public static event Action<PlayerType, float> OnPlayerSizeChangeRequested;
 
@@ -42,14 +42,14 @@ namespace Game.Player
             OnPlayerColorChangeRequested?.Invoke(playerType, color);
         }
 
-        public static void RaisePlayerColorUpdated(PlayerType playerType, Color32 color)
+        public static void RaisePlayerColorUpdatedInSettings(PlayerType playerType, Color32 color)
         {
-            OnPlayerColorUpdated?.Invoke(playerType, color);
+            OnPlayerColorUpdatedInSettings?.Invoke(playerType, color);
         }
 
-        public static void RaisePlayerColorRandomized(PlayerType playerType, Color32 color)
+        public static void RaisePlayerColorChangedInGameplay(PlayerType playerType, Color32 color)
         {
-            OnPlayerColorRandomized?.Invoke(playerType, color);
+            OnPlayerColorChangedInGameplay?.Invoke(playerType, color);
         }
 
         public static void RaisePlayerSizeChangeRequested(PlayerType playerType, float scale)

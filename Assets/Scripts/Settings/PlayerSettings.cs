@@ -114,7 +114,7 @@ namespace Game.Settings
 
         private void SendPlayerColor(PlayerType playerType)
         {
-            PlayerEvents.RaisePlayerColorUpdated(playerType, _colors[playerType]);
+            PlayerEvents.RaisePlayerColorUpdatedInSettings(playerType, _colors[playerType]);
         }
 
         private void SendUIColorValue(PlayerType playerType)

@@ -23,7 +23,7 @@ namespace Game.UI
             _image = GetComponent<Image>();
 
             UIEvents.OnColorValueInitialized += InitializeChannel;
-            PlayerEvents.OnPlayerColorRandomized += UpdateColorAndChannels;
+            PlayerEvents.OnPlayerColorChangedInGameplay += UpdateColorAndChannels;
 
 
             _redChannelSlider.OnChannelChanged += ChangeRedChannel;
@@ -39,7 +39,7 @@ namespace Game.UI
         private void OnDestroy()
         {
             UIEvents.OnColorValueInitialized -= InitializeChannel;
-            PlayerEvents.OnPlayerColorRandomized -= UpdateColorAndChannels;
+            PlayerEvents.OnPlayerColorChangedInGameplay -= UpdateColorAndChannels;
 
             _redChannelSlider.OnChannelChanged -= ChangeRedChannel;
             _greenChannelSlider.OnChannelChanged -= ChangeGreenChannel;

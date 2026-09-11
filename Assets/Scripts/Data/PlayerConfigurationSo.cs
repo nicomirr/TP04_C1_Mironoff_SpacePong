@@ -17,6 +17,9 @@ namespace Game.Player.Configuration
         [SerializeField] private Vector2 _initialPosition;
         public Vector2 InitialPosition => _initialPosition;
 
+        [SerializeField] private Color32 _collidingWithLimitsColor;
+        public Color32 CollidingWithlimitsColor => _collidingWithLimitsColor;
+
     }
 }
 

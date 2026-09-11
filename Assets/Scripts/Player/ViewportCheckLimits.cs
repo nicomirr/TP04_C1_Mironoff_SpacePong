@@ -1,27 +1,36 @@
 using UnityEngine;
-using Game.Data;
+using Game.Player.Configuration;
 
-public class ViewportCheckLimits 
+namespace Game.Player
 {
-    private Camera _camera;
-    private ViewportLimitsSo _viewportLimits;
-
-    public ViewportCheckLimits(ViewportLimitsSo viewportLimits)
+    public class ViewportCheckLimits
     {
-        _camera = Camera.main;
-        _viewportLimits = viewportLimits;
+        private Camera _camera;
+
+        private ViewportLimitsSo _viewportLimits;
+        public ViewportLimitsSo ViewportLimits => _viewportLimits;
+
+        public ViewportCheckLimits(ViewportLimitsSo viewportLimits)
+        {
+            _camera = Camera.main;
+            _viewportLimits = viewportLimits;
+        }
+
+        public Vector2 ClampFinalPosition(Vector2 position, out bool limitReached)
+        {
+            Vector3 viewportPointPosition = _camera.WorldToViewportPoint(position);
+
+            viewportPointPosition.x = Mathf.Clamp(viewportPointPosition.x,
+                _viewportLimits.MinX, _viewportLimits.MaxX);
+
+            viewportPointPosition.y = Mathf.Clamp(viewportPointPosition.y,
+                _viewportLimits.MinY, _viewportLimits.MaxY);
+
+            limitReached = viewportPointPosition.x == ViewportLimits.MinX || viewportPointPosition.x == ViewportLimits.MaxX ||
+                viewportPointPosition.y == ViewportLimits.MinY || viewportPointPosition.y == ViewportLimits.MaxY;
+
+            return _camera.ViewportToWorldPoint(viewportPointPosition);
+        }
     }
 
-    public Vector2 ClampFinalPosition(Vector2 position)
-    {
-        Vector3 viewportPointPosition = _camera.WorldToViewportPoint(position);
-
-        viewportPointPosition.x = Mathf.Clamp(viewportPointPosition.x,
-            _viewportLimits.MinX, _viewportLimits.MaxX);
-
-        viewportPointPosition.y = Mathf.Clamp(viewportPointPosition.y,
-            _viewportLimits.MinY, _viewportLimits.MaxY);
-
-        return _camera.ViewportToWorldPoint(viewportPointPosition);
-    }
 }

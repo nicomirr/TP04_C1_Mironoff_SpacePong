@@ -1,13 +1,14 @@
 using UnityEngine;
 using Game.Gameplay;
 using Game.Player.Configuration;
+using System;
 
 namespace Game.Player
 {
     [RequireComponent(typeof(PlayerInputs))]
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(Rotation))]
-    [RequireComponent(typeof(Appearance))]
+    [RequireComponent(typeof(ColorChanger))]
     [RequireComponent(typeof(PaddleScaler))]
     [RequireComponent(typeof(Rigidbody2D))]
 
@@ -16,8 +17,10 @@ namespace Game.Player
         private PlayerInputs _playerInputs;
         private Movement _movement;
         private Rotation _rotation;
-        private Appearance _appearance;
+        private ColorChanger _colorChanger;
         private PaddleScaler _paddleScaler;
+
+        private bool _movementLimitReached;
 
         private Rigidbody2D _rb;
         
@@ -42,7 +45,7 @@ namespace Game.Player
             _playerInputs.Deinitialize();
 
             PlayerEvents.OnPlayerMovementSpeedUpdated -= TryChangeMovementSpeed;
-            PlayerEvents.OnPlayerColorUpdated -= TryChangeColor;
+            PlayerEvents.OnPlayerColorUpdatedInSettings -= TryChangeColor;
             PlayerEvents.OnPlayerSizeUpdated -= TryChangeSize;
             GameplayEvents.OnPaddleGrowthActivated -= TryActivatePaddleGrowth;
         }
@@ -52,24 +55,22 @@ namespace Game.Player
             _playerInputs = GetComponent<PlayerInputs>();
             _movement = GetComponent<Movement>();
             _rotation = GetComponent<Rotation>();
-            _appearance = GetComponent<Appearance>();
+            _colorChanger = GetComponent<ColorChanger>();
             _paddleScaler = GetComponent<PaddleScaler>();
 
             _rb = GetComponent<Rigidbody2D>();
 
             _playerInputs.Initialize(configuration.PlayerType);
-
             ViewportCheckLimits checkLimits = new ViewportCheckLimits(configuration.ViewportLimits);
             _movement.Initialize(_rb, checkLimits);
-
             _rotation.Initialize(_rb, configuration.Rotation);
-            _appearance.Initialize();
+            _colorChanger.Initialize(configuration.CollidingWithlimitsColor);
             _paddleScaler.Initialize();
 
             _rb.position = configuration.InitialPosition;
 
             PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
-            PlayerEvents.OnPlayerColorUpdated += TryChangeColor;
+            PlayerEvents.OnPlayerColorUpdatedInSettings += TryChangeColor;
             PlayerEvents.OnPlayerSizeUpdated += TryChangeSize;
             GameplayEvents.OnPaddleGrowthActivated += TryActivatePaddleGrowth;
         }
@@ -77,7 +78,7 @@ namespace Game.Player
 
         private void HandleMovement()
         {
-            _movement.Move(_playerInputs.MovementDirection);
+            _movementLimitReached = _movement.Move(_playerInputs.MovementDirection);
         }
 
         private void HandleRotation()
@@ -92,11 +93,20 @@ namespace Game.Player
 
         private void HandleColorChange()
         {
-            if(_playerInputs.ChangeColorReleased)
+            if(_movementLimitReached)
             {
-                Color32 color = _appearance.RandomizeColor();
+                Color32 color = _colorChanger.HandleCollidingWithLimits();
+            }            
+            else if(!_movementLimitReached)
+            {
+                Color32? color = _colorChanger.TryResetColor();                                
+            }
 
-                PlayerEvents.RaisePlayerColorRandomized(_playerInputs.PlayerType, color);
+            if (_playerInputs.ChangeColorReleased)
+            {
+                Color32 color = _colorChanger.RandomizeColor();
+
+                PlayerEvents.RaisePlayerColorChangedInGameplay(_playerInputs.PlayerType, color);
             }
         }        
 
@@ -111,7 +121,7 @@ namespace Game.Player
         {
             if (_playerInputs.PlayerType != player) return;
             
-            _appearance.ChangeColor(color);
+            _colorChanger.ChangeColor(color);
         }
 
         private void TryChangeSize(PlayerType player, float scale)
@@ -126,6 +136,13 @@ namespace Game.Player
             if (_playerInputs.PlayerType != player) return;
 
             _paddleScaler.EnablePaddleGrowth(time, growthFactor);
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Color32 color = _colorChanger.RandomizeColor();
+
+            PlayerEvents.RaisePlayerColorChangedInGameplay(_playerInputs.PlayerType, color);
         }
 
     }

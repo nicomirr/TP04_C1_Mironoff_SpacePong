@@ -15,12 +15,16 @@ namespace Game.Player
             _checkLimits = checkLimits;
         }
 
-        public void Move(Vector2 direction)
+        public bool Move(Vector2 direction)
         {           
-            Vector2 targetPosition = _rb.position + direction.normalized * (_movementSpeed * Time.fixedDeltaTime);            
+            Vector2 targetPosition = _rb.position + direction.normalized * (_movementSpeed * Time.fixedDeltaTime);
 
-            targetPosition = _checkLimits.ClampFinalPosition(targetPosition);
+            bool limitReached;
+            
+            targetPosition = _checkLimits.ClampFinalPosition(targetPosition, out limitReached);
             _rb.MovePosition(targetPosition);
+
+            return limitReached;
         }
 
         public void UpdateSpeed(float movementSpeed)
