@@ -11,7 +11,7 @@ namespace Game.Player
         private GameControls _playerControls;        
 
         private InputAction _moveAction; 
-        public float MovementDirection => _moveAction.ReadValue<float>();
+        public Vector2 MovementDirection => _moveAction.ReadValue<Vector2>();
 
         private InputAction _rotateAction; 
         private InputAction _changeColorAction; 

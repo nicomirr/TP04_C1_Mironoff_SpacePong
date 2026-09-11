@@ -8,11 +8,15 @@ namespace Game.Player.Configuration
         [SerializeField] private PlayerType _playerType;
         public PlayerType PlayerType => _playerType;
 
+        [SerializeField] private ViewportLimitsSo _viewPortLimits;
+        public ViewportLimitsSo ViewportLimits => _viewPortLimits;
+
         [SerializeField] private float _rotation;
         public float Rotation => _rotation;
 
-        [SerializeField] private Vector2 _position;
-        public Vector2 Position => _position;
+        [SerializeField] private Vector2 _initialPosition;
+        public Vector2 InitialPosition => _initialPosition;
+
     }
 }
 

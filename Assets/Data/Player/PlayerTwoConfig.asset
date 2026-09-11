@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerTwoConfig
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.PlayerConfigurationSo
   _playerType: 1
+  _viewPortLimits: {fileID: 11400000, guid: 4419560f481afd1419281e63c032ae04, type: 2}
   _rotation: 10
-  _position: {x: 7.6, y: 0}
+  _initialPosition: {x: 7.6, y: 0}

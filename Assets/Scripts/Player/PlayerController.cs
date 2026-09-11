@@ -58,12 +58,15 @@ namespace Game.Player
             _rb = GetComponent<Rigidbody2D>();
 
             _playerInputs.Initialize(configuration.PlayerType);
-            _movement.Initialize(_rb);
+
+            ViewportCheckLimits checkLimits = new ViewportCheckLimits(configuration.ViewportLimits);
+            _movement.Initialize(_rb, checkLimits);
+
             _rotation.Initialize(_rb, configuration.Rotation);
             _appearance.Initialize();
             _paddleScaler.Initialize();
 
-            _rb.position = configuration.Position;
+            _rb.position = configuration.InitialPosition;
 
             PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
             PlayerEvents.OnPlayerColorUpdated += TryChangeColor;
