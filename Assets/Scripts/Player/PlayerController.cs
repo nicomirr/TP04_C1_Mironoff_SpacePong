@@ -1,19 +1,16 @@
 using UnityEngine;
 using Game.Gameplay;
 using Game.Player.Configuration;
-using Game.Ball;
+using Game.Markers;
 
 namespace Game.Player
-{
-    [RequireComponent(typeof(PlayerInputs))]
-    [RequireComponent(typeof(Movement))]
-    [RequireComponent(typeof(Rotation))]
-    [RequireComponent(typeof(ColorChanger))]
-    [RequireComponent(typeof(PaddleScaler))]
+{    
     [RequireComponent(typeof(Rigidbody2D))]
 
     public class PlayerController : MonoBehaviour
     {
+        public PlayerType PlayerType => _playerInputs.PlayerType;
+
         private PlayerInputs _playerInputs;
         private Movement _movement;
         private Rotation _rotation;
@@ -26,11 +23,11 @@ namespace Game.Player
         
         private void Start()
         {
-            PlayerEvents.RaisePlayerInitialized(_playerInputs.PlayerType);
+            PlayerEvents.RaisePlayerInitialized(PlayerType);
         }
 
         private void FixedUpdate()
-        {
+        {            
             HandleMovement();            
         }
 
@@ -42,7 +39,7 @@ namespace Game.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent<BallController>(out var _))
+            if (collision.gameObject.TryGetComponent<BallMarker>(out var _))
             {
                 RandomizePaddleColor();
             }
@@ -59,21 +56,20 @@ namespace Game.Player
         }
 
         public void Initialize(PlayerConfigurationSo configuration)
-        {
-            _playerInputs = GetComponent<PlayerInputs>();
-            _movement = GetComponent<Movement>();
-            _rotation = GetComponent<Rotation>();
-            _colorChanger = GetComponent<ColorChanger>();
-            _paddleScaler = GetComponent<PaddleScaler>();
-
+        {            
             _rb = GetComponent<Rigidbody2D>();
 
-            _playerInputs.Initialize(configuration.PlayerType);
+            _playerInputs = new PlayerInputs(configuration.PlayerType);
+            
             ViewportCheckLimits checkLimits = new ViewportCheckLimits(configuration.ViewportLimits);
-            _movement.Initialize(_rb, checkLimits);
-            _rotation.Initialize(_rb, configuration.Rotation);
-            _colorChanger.Initialize(configuration.CollidingWithlimitsColor);
-            _paddleScaler.Initialize();
+            _movement = new Movement(_rb, checkLimits);
+            
+            _rotation = new Rotation(_rb, configuration.Rotation);
+
+            _colorChanger = new ColorChanger(GetComponentInChildren<SpriteRenderer>(), 
+                configuration.CollidingWithlimitsColor);
+
+            _paddleScaler = new PaddleScaler(GetComponentInChildren<PaddleVisualMarker>().transform);
 
             _rb.position = configuration.InitialPosition;
 
@@ -119,36 +115,41 @@ namespace Game.Player
         private void RandomizePaddleColor()
         {
             Color32 color = _colorChanger.RandomizeColor();
-            PlayerEvents.RaisePlayerColorChangedInGameplay(_playerInputs.PlayerType, color);
+            PlayerEvents.RaisePlayerColorChangedInGameplay(PlayerType, color);
         }
 
         private void TryChangeMovementSpeed(PlayerType player, float speed)
         {
-            if (_playerInputs.PlayerType != player) return;
+            if (PlayerType != player) return;
 
             _movement.UpdateSpeed(speed);
         }
 
         private void TryChangeColorWithSettings(PlayerType player, Color32 color)
         {
-            if (_playerInputs.PlayerType != player) return;
+            if (PlayerType != player) return;
             
             _colorChanger.ChangeColorWithSettings(color);
         }
 
         private void TryChangeSizeWithSettings(PlayerType player, float scale)
         {
-            if (_playerInputs.PlayerType != player) return;
+            if (PlayerType != player) return;
 
             _paddleScaler.ChangeScaleWithSettings(scale);
         }
 
         private void TryActivatePaddleGrowth(PlayerType player, float time, float growthFactor)
         {
-            if (_playerInputs.PlayerType != player) return;
+            if (PlayerType != player) return;
 
-            _paddleScaler.EnablePaddleGrowth(time, growthFactor);
+            if(_paddleScaler.PaddleGrowth)
+                StopAllCoroutines();
+
+            StartCoroutine(_paddleScaler.GrowPaddleRoutine(time, growthFactor));
         }        
+
+
     }
 }
 

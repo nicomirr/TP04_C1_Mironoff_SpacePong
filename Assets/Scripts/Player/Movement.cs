@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Game.Player
 {    
-    public class Movement : MonoBehaviour
+    public class Movement
     {
         private ViewportCheckLimits _checkLimits;
 
         private Rigidbody2D _rb;
         private float _movementSpeed;
 
-        public void Initialize(Rigidbody2D rb, ViewportCheckLimits checkLimits)
+        public Movement(Rigidbody2D rb, ViewportCheckLimits checkLimits)
         {
             _rb = rb;
             _checkLimits = checkLimits;

@@ -448,8 +448,8 @@ Transform:
   m_GameObject: {fileID: 574286748}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.45, z: 0}
-  m_LocalScale: {x: 14, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: -5.45, z: 0}
+  m_LocalScale: {x: 16.81366, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1981106092}
@@ -881,8 +881,8 @@ Transform:
   m_GameObject: {fileID: 745569149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.45, z: 0}
-  m_LocalScale: {x: 14, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 5.45, z: 0}
+  m_LocalScale: {x: 16.81366, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1981106092}
@@ -2011,11 +2011,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1824642154}
   - component: {fileID: 1824642161}
-  - component: {fileID: 1824642155}
-  - component: {fileID: 1824642158}
-  - component: {fileID: 1824642159}
-  - component: {fileID: 1824642160}
-  - component: {fileID: 1824642162}
   - component: {fileID: 1824642157}
   - component: {fileID: 1824642156}
   m_Layer: 7
@@ -2041,18 +2036,6 @@ Transform:
   - {fileID: 1210005697}
   m_Father: {fileID: 389960597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1824642155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824642153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f936280196ed03489c22580420b4287, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BallLauncher
 --- !u!50 &1824642156
 Rigidbody2D:
   serializedVersion: 5
@@ -2116,42 +2099,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.18
---- !u!114 &1824642158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824642153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94811c49d562591478c2e4a334551d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BallMovement
---- !u!114 &1824642159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824642153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90104ac24c8dfbc4098aa0b0660004aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BallHitTracker
---- !u!114 &1824642160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824642153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db9db2ad0b2b85c43aba9938c88a2643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BallHitCounter
 --- !u!114 &1824642161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2165,18 +2112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Ball.BallController
   _data: {fileID: 11400000, guid: 8a27390b40ab78042b9e88837abca5cf, type: 2}
---- !u!114 &1824642162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1824642153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a39b422d21836094d959908e818d5790, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Ball.BallDirectionCorrector
 --- !u!1 &1981106091
 GameObject:
   m_ObjectHideFlags: 0

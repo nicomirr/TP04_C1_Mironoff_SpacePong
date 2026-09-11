@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BallConfigurationSo
   _launchForce: 10
   _launchDelay: 2
-  _speedIncreasePerHit: 0.2
+  _speedIncrease: 0.2
+  _hitsRequiredToSpeedUp: 1
   _initialSpeed: 10
   _maxSpeed: 16
   _minHorizontalXDirection: 0.6

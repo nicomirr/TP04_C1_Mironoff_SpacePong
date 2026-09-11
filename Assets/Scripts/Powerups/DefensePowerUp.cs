@@ -1,23 +1,27 @@
 using Game.Gameplay;
-using Game.Player;
 using UnityEngine;
 using Game.Data;
+using Game.Ball;
 
-public class DefensePowerUp : MonoBehaviour
+namespace Game.Player
 {
-    [SerializeField] private TimedPowerupDataSo _data;
-
-    private void Activate(PlayerType playerType)
+    public class DefensePowerUp : MonoBehaviour
     {
-        GameplayEvents.RaiseDefenseActivated(playerType, _data.Time);
-    }
+        [SerializeField] private TimedPowerupDataSo _data;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<BallHitTracker>(out BallHitTracker ballHitTracker))
+        private void Activate(PlayerType playerType)
         {
-            Activate(ballHitTracker.LastPlayer);
-            this.gameObject.SetActive(false);
+            GameplayEvents.RaiseDefenseActivated(playerType, _data.Time);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent<BallController>(out var ballController))
+            {
+                Activate(ballController.LastPlayerHit);
+                this.gameObject.SetActive(false);
+            }
         }
     }
 }
+

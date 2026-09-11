@@ -6,26 +6,25 @@ using Game.Data;
 
 namespace Game.Ball
 {    
-    [RequireComponent(typeof(BallHitTracker))]
     [RequireComponent(typeof(Rigidbody2D))]
 
     public class BallController : MonoBehaviour
     {
         [SerializeField] private BallConfigurationSo _data;
 
-        private BallHitTracker _ballHitTracker;
+        public PlayerType LastPlayerHit => _ballHitTracker.LastPlayer;
 
         private BallLauncher _ballLauncher;
         private BallMovement _ballMovement;
         private BallSpeed _ballSpeed;
         private BallSpeedBooster _ballSpeedBooster; 
         private BallDirectionCorrector _ballDirectionCorrector;
+        private BallHitTracker _ballHitTracker;
 
         private Rigidbody2D _rb;
 
         private void Awake()
         {
-            _ballHitTracker = GetComponent<BallHitTracker>();
             _rb = GetComponent<Rigidbody2D>();
 
             _ballMovement = new BallMovement(_rb);
@@ -33,9 +32,7 @@ namespace Game.Ball
             _ballSpeed = new BallSpeed(_data);
             _ballSpeedBooster = new BallSpeedBooster();
             _ballDirectionCorrector = new BallDirectionCorrector(_data);
-
-            _ballHitTracker.Initialize(_data);
-
+            _ballHitTracker = new BallHitTracker(_data);
 
             GameplayEvents.OnBallSpeedBoostActivated += HandleBoostEnable;
         }
@@ -99,14 +96,14 @@ namespace Game.Ball
 
         private void HandleLastPlayerHitTracking(GameObject gameObject)
         {
-            if (gameObject.TryGetComponent<PlayerInputs>(out PlayerInputs playerInputs))
+            if (gameObject.TryGetComponent<PlayerController>(out var playerController))
             {
-                _ballHitTracker.RegisterHit(playerInputs.PlayerType);
+                _ballHitTracker.RegisterHit(playerController.PlayerType);
 
                 if(_ballHitTracker.TryConsumeSpeedIncrease())
                     _ballSpeed.TryIncreaseSpeed();
             }
-        }
+        }        
     }
 }
 

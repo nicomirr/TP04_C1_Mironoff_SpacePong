@@ -10,11 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1222409918594708915}
   - component: {fileID: 7745276454413948918}
-  - component: {fileID: 1053914468975231018}
-  - component: {fileID: 2622442015302557571}
-  - component: {fileID: 5947839654945786444}
-  - component: {fileID: 3758422849614335914}
-  - component: {fileID: 8777640416153450918}
   - component: {fileID: 1088932942894101521}
   m_Layer: 0
   m_Name: Player
@@ -51,66 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b824e0106b3318498762561076f27c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Player.PlayerController
---- !u!114 &1053914468975231018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566491003599206591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b54d56e811409240bf7d056a5a6857b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Player.PlayerInputs
---- !u!114 &2622442015302557571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566491003599206591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9de4aeb44b8d59441af410d39484e7cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Player.Movement
---- !u!114 &5947839654945786444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566491003599206591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb8d833840b28c649a59ffba57d96941, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Player.Rotation
---- !u!114 &3758422849614335914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566491003599206591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ff90f75bbe2cd4cab7d93a12cacd1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Appearance
---- !u!114 &8777640416153450918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5566491003599206591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c612462b54b683e428abc263acbb51ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.Player.PaddleScaler
 --- !u!50 &1088932942894101521
 Rigidbody2D:
   serializedVersion: 5

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Player
 {
-    public class ColorChanger : MonoBehaviour
+    public class ColorChanger
     {
         private SpriteRenderer _spriteRenderer;        
         
@@ -11,9 +11,9 @@ namespace Game.Player
 
         private bool _collidingWithLimits;
 
-        public void Initialize(Color32 collidingWithLimitsColor)
+        public ColorChanger(SpriteRenderer spriteRenderer, Color32 collidingWithLimitsColor)
         {
-            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            _spriteRenderer = spriteRenderer;
             _collidingWithLimitsColor = collidingWithLimitsColor;
         }
 

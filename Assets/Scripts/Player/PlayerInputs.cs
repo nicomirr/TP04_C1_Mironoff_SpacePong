@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 
 namespace Game.Player
 {
-    public class PlayerInputs : MonoBehaviour
+    public class PlayerInputs 
     {
-        private PlayerType _playerType;
+        private readonly PlayerType _playerType;
         public PlayerType PlayerType => _playerType;
 
-        private GameControls _playerControls;        
+        private readonly GameControls _playerControls;        
 
         private InputAction _moveAction; 
         public Vector2 MovementDirection => _moveAction.ReadValue<Vector2>();
@@ -18,14 +18,8 @@ namespace Game.Player
 
         public bool ChangeColorReleased => _changeColorAction.WasReleasedThisFrame();
 
-        public bool RotationPressed(out float value)
-        {
-            value = _rotateAction.ReadValue<float>();
-
-            return _rotateAction.WasPressedThisFrame();
-        }
-
-        public void Initialize(PlayerType playerType)
+        
+        public PlayerInputs(PlayerType playerType)
         {
             _playerControls = new GameControls();
             _playerType = playerType;
@@ -42,6 +36,16 @@ namespace Game.Player
             _moveAction.Disable();
             _rotateAction.Disable();
             _changeColorAction.Disable();
+
+            _playerControls.Disable();
+            _playerControls.Dispose();
+        }
+
+        public bool RotationPressed(out float value)
+        {
+            value = _rotateAction.ReadValue<float>();
+
+            return _rotateAction.WasPressedThisFrame();
         }
 
         private void EnablePlayerInputs()

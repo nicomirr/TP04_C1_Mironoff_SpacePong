@@ -2,7 +2,7 @@ using Game.Data;
 using Game.Player;
 using UnityEngine;
 
-public class BallHitTracker : MonoBehaviour
+public class BallHitTracker 
 {
     private int _hitsRequiredToSpeedUp;
 
@@ -12,7 +12,7 @@ public class BallHitTracker : MonoBehaviour
     private int _hitCount;
     public int HitCount => _hitCount;
 
-    public void Initialize(BallConfigurationSo data)
+    public BallHitTracker(BallConfigurationSo data)
     {
         _hitsRequiredToSpeedUp = data.HitsRequiredToSpeedUp;
     }

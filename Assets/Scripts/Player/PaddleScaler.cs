@@ -3,19 +3,21 @@ using System.Collections;
 
 namespace Game.Player
 {
-    public class PaddleScaler : MonoBehaviour
+    public class PaddleScaler
     {        
         private float _growthFactor = 1f;
         
-        private Transform _paddleTransform;
+        private Transform _paddleImageTransform;
 
         private float _baseYScale;
+        
         private bool _paddleGrowth;
+        public bool PaddleGrowth => _paddleGrowth;
 
-        public void Initialize()
+        public PaddleScaler(Transform paddleImageTransform)
         {
-            _paddleTransform = GetComponentInChildren<PaddleVisualTag>().transform;            
-            _baseYScale = _paddleTransform.localScale.y;
+            _paddleImageTransform = paddleImageTransform;         
+            _baseYScale = _paddleImageTransform.localScale.y;
         }
         
         public void ChangeScaleWithSettings(float yScale)
@@ -24,15 +26,7 @@ namespace Game.Player
             ApplyScale();
         }
 
-        public void EnablePaddleGrowth(float time, float growthFactor)
-        {
-            if (_paddleGrowth)
-                StopAllCoroutines();
-
-            StartCoroutine(GrowPaddleRoutine(time, growthFactor));
-        }
-
-        private IEnumerator GrowPaddleRoutine(float time, float growthFactor)
+        public IEnumerator GrowPaddleRoutine(float time, float growthFactor)
         {
             _growthFactor = growthFactor;
 
@@ -53,8 +47,8 @@ namespace Game.Player
                 ? _baseYScale * _growthFactor
                 : _baseYScale;
 
-            _paddleTransform.localScale =
-                new Vector3(_paddleTransform.localScale.x, yScale);
+            _paddleImageTransform.localScale =
+                new Vector3(_paddleImageTransform.localScale.x, yScale);
         }
     }
 }
