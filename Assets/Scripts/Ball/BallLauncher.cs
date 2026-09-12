@@ -35,6 +35,11 @@ namespace Game.Ball
 
             _isLaunched = true;
         }
+
+        public void ResetLaunchState()
+        {
+            _isLaunched = false;
+        }
     }
 }
 

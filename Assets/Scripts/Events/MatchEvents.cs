@@ -8,7 +8,7 @@ namespace Game.Events
         public static event Action OnRoundStarted;
         public static event Action OnRoundFinished;
         public static event Action<PlayerType> OnPointScored;
-
+        
         public static void RaiseRoundStarted()
         {
             OnRoundStarted?.Invoke();

@@ -5,6 +5,9 @@ namespace Game.Data
     [CreateAssetMenu(fileName = "BallConfigurationSo", menuName = "Scriptable Objects/BallConfigurationSo")]
     public class BallConfigurationSo : ScriptableObject
     {
+        [SerializeField] private Vector2 _startingPos;
+        public Vector2 StartPosition => _startingPos;
+
         [SerializeField] private float _launchForce;
         public float LaunchForce => _launchForce;
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using Game.Player;
 using Game.Core;
 using Game.Data;
@@ -22,6 +21,7 @@ namespace Game.Ball
         private BallDirectionCorrector _ballDirectionCorrector;
         private BallHitTracker _ballHitTracker;
         private BallTrail _ballTrail;
+        private BallPositionResetter _ballPositionResetter;
 
         private Rigidbody2D _rb;
 
@@ -36,14 +36,13 @@ namespace Game.Ball
             _ballDirectionCorrector = new BallDirectionCorrector(_data);
             _ballHitTracker = new BallHitTracker(_data);
             _ballTrail = new BallTrail(GetComponentInChildren<TrailRenderer>());
-
-            PowerUpEvents.OnBallSpeedBoostActivated += HandleBoostEnable;
+            _ballPositionResetter = new BallPositionResetter(_rb, _data);                
         }
 
-        private IEnumerator Start()
+        private void OnEnable()
         {
-            yield return _ballLauncher.LaunchRoutine();
-            MatchEvents.RaiseRoundStarted();
+            MatchEvents.OnRoundStarted += LaunchBall;
+            PowerUpEvents.OnBallSpeedBoostActivated += HandleBoostEnable;
         }
 
         private void FixedUpdate()
@@ -57,11 +56,28 @@ namespace Game.Ball
             HandleLastPlayerHitTracking(collision.gameObject);            
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
+            MatchEvents.OnRoundStarted -= LaunchBall;
             PowerUpEvents.OnBallSpeedBoostActivated -= HandleBoostEnable;
         }
+                        
+        private void LaunchBall()
+        {
+            ResetBall();
+            StartCoroutine(_ballLauncher.LaunchRoutine());
+        }
 
+        private void ResetBall()
+        {
+            _ballLauncher.ResetLaunchState();
+            _ballMovement.Reset();
+            _ballSpeed.Reset();
+            _ballSpeedBooster.Reset();
+            _ballHitTracker.Reset();
+            _ballPositionResetter.Reset();
+        }
+              
         private void HandleMovement()
         {
             if (!_ballLauncher.IsLaunched) return;

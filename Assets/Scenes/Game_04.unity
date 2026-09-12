@@ -992,6 +992,7 @@ GameObject:
   - component: {fileID: 597581465}
   - component: {fileID: 597581467}
   - component: {fileID: 597581466}
+  - component: {fileID: 597581468}
   m_Layer: 0
   m_Name: RightScoreZone
   m_TagString: Untagged
@@ -1119,6 +1120,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &597581468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597581464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e53d0a7e0034104db78811be0dc5dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
+  _pointRecipient: 0
 --- !u!1 &624426935
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2889,7 @@ GameObject:
   - component: {fileID: 1411204036}
   - component: {fileID: 1411204038}
   - component: {fileID: 1411204037}
+  - component: {fileID: 1411204039}
   m_Layer: 0
   m_Name: LeftScoreZone
   m_TagString: Untagged
@@ -3002,6 +3017,19 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1411204039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411204035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e53d0a7e0034104db78811be0dc5dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreZone
+  _pointRecipient: 1
 --- !u!1 &1466054894
 GameObject:
   m_ObjectHideFlags: 0
@@ -3046,6 +3074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd0616c9fc6eb84e933f81ec22453de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MatchManager
+  _pointsToWin: 3
 --- !u!1 &1543511720
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3398,7 @@ Transform:
   m_GameObject: {fileID: 1824642153}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.323, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

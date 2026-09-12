@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c23c6dd32239c4d969d71ef45b7d0b, type: 3}
   m_Name: BallConfiguration
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.BallConfigurationSo
+  _startingPos: {x: 0, y: -0.3}
   _launchForce: 10
   _launchDelay: 2
   _speedIncrease: 0.2

@@ -21,7 +21,23 @@ namespace Game.Player
         private bool _movementLimitReached;
 
         private Rigidbody2D _rb;
-        
+
+        private void OnEnable()
+        {
+            PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
+            PlayerEvents.OnPlayerColorUpdatedInSettings += TryChangeColorWithSettings;
+            PlayerEvents.OnPlayerSizeUpdatedInSettings += TryChangeSizeWithSettings;
+            PowerUpEvents.OnPaddleGrowthActivated += TryActivatePaddleGrowth;
+        }
+
+        private void OnDisable()
+        {
+            PlayerEvents.OnPlayerMovementSpeedUpdated -= TryChangeMovementSpeed;
+            PlayerEvents.OnPlayerColorUpdatedInSettings -= TryChangeColorWithSettings;
+            PlayerEvents.OnPlayerSizeUpdatedInSettings -= TryChangeSizeWithSettings;
+            PowerUpEvents.OnPaddleGrowthActivated -= TryActivatePaddleGrowth;
+        }
+
         private void Start()
         {
             PlayerEvents.RaisePlayerInitialized(PlayerType);
@@ -48,12 +64,7 @@ namespace Game.Player
 
         private void OnDestroy()
         {
-            _playerInputs.Deinitialize();
-
-            PlayerEvents.OnPlayerMovementSpeedUpdated -= TryChangeMovementSpeed;
-            PlayerEvents.OnPlayerColorUpdatedInSettings -= TryChangeColorWithSettings;
-            PlayerEvents.OnPlayerSizeUpdatedInSettings -= TryChangeSizeWithSettings;
-            PowerUpEvents.OnPaddleGrowthActivated -= TryActivatePaddleGrowth;
+            _playerInputs.Deinitialize();           
         }
 
         public void Initialize(PlayerConfigurationSo configuration)
@@ -73,11 +84,6 @@ namespace Game.Player
             _paddleScaler = new PaddleScaler(GetComponentInChildren<PaddleVisualMarker>().transform);
 
             _rb.position = configuration.InitialPosition;
-
-            PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
-            PlayerEvents.OnPlayerColorUpdatedInSettings += TryChangeColorWithSettings;
-            PlayerEvents.OnPlayerSizeUpdatedInSettings += TryChangeSizeWithSettings;
-            PowerUpEvents.OnPaddleGrowthActivated += TryActivatePaddleGrowth;
         }
 
 

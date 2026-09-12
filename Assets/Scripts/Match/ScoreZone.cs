@@ -1,21 +1,17 @@
+using UnityEngine;
 using Game.Core;
 using Game.Markers;
-using UnityEngine;
+using Game.Events;
 
 public class ScoreZone : MonoBehaviour
 {
-    private PlayerType playerType;
-    
-    public void Initialize(PlayerType playerType)
-    {
-        this.playerType = playerType;
-    }
-
+    [SerializeField] private PlayerType _pointRecipient;
+        
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.TryGetComponent<BallMarker>(out var _))
         {
-
+            MatchEvents.RaisePointScored(_pointRecipient);
         }
     }
 }

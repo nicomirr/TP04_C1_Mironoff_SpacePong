@@ -14,7 +14,13 @@ namespace Game.Ball
         public void HandleMovement(Vector2 direction, float speed)
         {
             _rb.linearVelocity = direction.normalized * speed;
-        }     
+        }
+
+        public void Reset()
+        {
+            _rb.linearVelocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+        }
 
     }
 }

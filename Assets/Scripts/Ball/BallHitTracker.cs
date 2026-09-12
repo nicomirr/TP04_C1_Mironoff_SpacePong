@@ -32,4 +32,9 @@ public class BallHitTracker
 
         return false;
     }
+
+    public void Reset()
+    {
+        _hitCount = 0;
+    }
 }

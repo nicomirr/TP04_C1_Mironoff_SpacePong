@@ -12,19 +12,30 @@ namespace Game.Spawner
         [SerializeField] private SpawnerConfigSo _data;
         [SerializeField] private List<SpawnableObjectSpawner> _spawners = new List<SpawnableObjectSpawner>();
 
-        private void Awake()
+        private GameObject _currentSpawnableObject;
+                
+        private void OnEnable()
         {
-            MatchEvents.OnRoundStarted += StartSpawnObjectsRoutine;
+            MatchEvents.OnRoundStarted += StartObjectSpawners;
+            MatchEvents.OnRoundFinished += StopObjectSpawners;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
-            MatchEvents.OnRoundStarted -= StartSpawnObjectsRoutine;
+            MatchEvents.OnRoundStarted -= StartObjectSpawners;
+            MatchEvents.OnRoundFinished -= StopObjectSpawners;
         }
 
-        private void StartSpawnObjectsRoutine()
+        private void StartObjectSpawners()
         {
+            _currentSpawnableObject = null;
             StartCoroutine(SpawnObjectsRoutine());
+        }
+
+        private void StopObjectSpawners()
+        {
+            StopAllCoroutines();
+            _currentSpawnableObject?.SetActive(false);
         }
 
         private IEnumerator SpawnObjectsRoutine()
@@ -38,15 +49,14 @@ namespace Game.Spawner
                 yield return new WaitForSeconds(spawnTime);
                 
                 SpawnableObjectCategory randomCategory = categories[Random.Range(0, categories.Length)];
-
-                GameObject spawnableObject = null;
+                                
                 SpawnableObjectSpawner currentSpawner = null;
 
                 foreach (SpawnableObjectSpawner spawner in _spawners)
                 {
-                    spawnableObject = spawner.TrySpawnObject(randomCategory);
+                    _currentSpawnableObject = spawner.TrySpawnObject(randomCategory);
 
-                    if (spawnableObject != null)
+                    if (_currentSpawnableObject != null)
                     {
                         currentSpawner = spawner;
                         break;
@@ -56,9 +66,11 @@ namespace Game.Spawner
                 float despawnTime = Random.Range(_data.MinDespawnTime, _data.MaxDespawnTime);
                 yield return new WaitForSeconds(despawnTime);
 
-                currentSpawner?.ReleaseObject(spawnableObject);                
+                currentSpawner?.ReleaseObject(_currentSpawnableObject);        
+                _currentSpawnableObject = null;
             }
         }
+        
     }
 }
 

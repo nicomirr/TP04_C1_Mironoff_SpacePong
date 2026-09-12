@@ -7,11 +7,7 @@ using Game.Data;
 
 namespace Game.Settings
 {
-    //IMPORTANTE: pasar el rotation amount a scriptable object. Pasar también a scriptable
-    //object si es jugador 1 o 2
-
-    //REFACTORIZAR CON GENERICS Y CON SCRIPTABLE OBJECTS (LA INFO DEL JUGADOR VA A IR EN SCRIPTABLEOBJECTS)
-    //CREO QUE YA ESTA TODO EN SCRIPTABLE EN INTIALSETTINGS
+    
 
     public class PlayerSettings : MonoBehaviour
     {
@@ -37,27 +33,8 @@ namespace Game.Settings
                 Destroy(this.gameObject);
                 return;
             }
-
-            _movementSpeeds = new Dictionary<PlayerType, float>();
-
-            foreach (PlayerType playerType in Enum.GetValues(typeof(PlayerType)))
-            {
-                _movementSpeeds.Add(playerType, _initialSettings.MovementSpeed);
-            }
-
-            _colors = new Dictionary<PlayerType, Color32>();
-
-            foreach (PlayerType playerType in Enum.GetValues(typeof(PlayerType)))
-            {
-                _colors.Add(playerType, _initialSettings.PadColor);
-            }
-
-            _yScales = new Dictionary<PlayerType, float>();
-
-            foreach(PlayerType playerType in Enum.GetValues(typeof (PlayerType)))
-            {
-                _yScales.Add(playerType, _initialSettings.PadSize);
-            }
+            
+            InitializeSettings();
 
             PlayerEvents.OnPlayerInitialized += SendPlayerMovementSpeed;
             PlayerEvents.OnPlayerInitialized += SendPlayerScale;
@@ -87,6 +64,43 @@ namespace Game.Settings
             if (_instance == this)
             {
                 _instance = null;
+            }
+        }
+
+        private void InitializeSettings()
+        {
+            InitializeSpeeds();
+            InitializeColors();
+            InitializePaddleSizes();          
+        }
+
+        private void InitializeSpeeds()
+        {
+            _movementSpeeds = new Dictionary<PlayerType, float>();
+
+            foreach (PlayerType playerType in Enum.GetValues(typeof(PlayerType)))
+            {
+                _movementSpeeds.Add(playerType, _initialSettings.MovementSpeed);
+            }
+        }
+
+        private void InitializeColors()
+        {
+            _colors = new Dictionary<PlayerType, Color32>();
+
+            foreach (PlayerType playerType in Enum.GetValues(typeof(PlayerType)))
+            {
+                _colors.Add(playerType, _initialSettings.PadColor);
+            }
+        }
+
+        private void InitializePaddleSizes()
+        {
+            _yScales = new Dictionary<PlayerType, float>();
+
+            foreach (PlayerType playerType in Enum.GetValues(typeof(PlayerType)))
+            {
+                _yScales.Add(playerType, _initialSettings.PadSize);
             }
         }
 

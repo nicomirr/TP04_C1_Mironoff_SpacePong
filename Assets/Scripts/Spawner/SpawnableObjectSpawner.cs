@@ -46,7 +46,7 @@ namespace Game.Spawner
         public void ReleaseObject(GameObject spawnableObject)
         {
             _spawnableObjectPool.ReleaseSpawnableObject(spawnableObject);
-        }        
+        }                       
     }
 }
 

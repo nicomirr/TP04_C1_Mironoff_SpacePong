@@ -65,6 +65,7 @@ namespace Game.Spawner
         {
             spawnableObject.SetActive(false);
         }
+                
     }
 
 }

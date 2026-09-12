@@ -19,6 +19,11 @@ namespace Game.Ball
         {
             _isBoosted = false;
         }               
+
+        public void Reset()
+        {
+            DisableBoost();
+        }
     }
 }
 
