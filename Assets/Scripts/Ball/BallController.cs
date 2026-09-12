@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using Game.Gameplay;
 using Game.Player;
+using Game.Core;
 using Game.Data;
+using Game.Events;
 
 namespace Game.Ball
 {    
@@ -36,13 +37,13 @@ namespace Game.Ball
             _ballHitTracker = new BallHitTracker(_data);
             _ballTrail = new BallTrail(GetComponentInChildren<TrailRenderer>());
 
-            GameplayEvents.OnBallSpeedBoostActivated += HandleBoostEnable;
+            PowerUpEvents.OnBallSpeedBoostActivated += HandleBoostEnable;
         }
 
         private IEnumerator Start()
         {
             yield return _ballLauncher.LaunchRoutine();
-            GameplayEvents.RaiseRoundStarted();
+            MatchEvents.RaiseRoundStarted();
         }
 
         private void FixedUpdate()
@@ -58,7 +59,7 @@ namespace Game.Ball
 
         private void OnDestroy()
         {
-            GameplayEvents.OnBallSpeedBoostActivated -= HandleBoostEnable;
+            PowerUpEvents.OnBallSpeedBoostActivated -= HandleBoostEnable;
         }
 
         private void HandleMovement()

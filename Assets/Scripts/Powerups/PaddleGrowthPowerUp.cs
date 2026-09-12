@@ -1,24 +1,28 @@
 using UnityEngine;
-using Game.Gameplay;
-using Game.Player;
+using Game.Core;
 using Game.Data;
 using Game.Ball;
+using Game.Events;
 
-public class PaddleGrowthPowerUp : MonoBehaviour
+namespace Game.PowerUps
 {
-    [SerializeField] private PaddleGrowthDataSo _data;
-
-    private void Activate(PlayerType playerType)
+    public class PaddleGrowthPowerUp : MonoBehaviour
     {
-        GameplayEvents.RaisePaddleGrowthActivated(playerType, _data.Time, _data.GrowthFactor);
-    }
+        [SerializeField] private PaddleGrowthDataSo _data;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.TryGetComponent<BallController>(out var ball))
+        private void Activate(PlayerType playerType)
         {
-            Activate(ball.LastPlayerHit);
-            this.gameObject.SetActive(false);
-        }        
+            PowerUpEvents.RaisePaddleGrowthActivated(playerType, _data.Time, _data.GrowthFactor);
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent<BallController>(out var ball))
+            {
+                Activate(ball.LastPlayerHit);
+                this.gameObject.SetActive(false);
+            }
+        }
     }
 }
+

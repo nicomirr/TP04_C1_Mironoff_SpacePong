@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.SceneTransitions;
+using Game.Events;
 using Game.Data;
 
 namespace Game.UI

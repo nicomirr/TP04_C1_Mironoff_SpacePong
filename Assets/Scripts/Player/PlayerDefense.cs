@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections;
-using Game.Gameplay;
 using Game.Data;
-
-//EVALUAR QUE HACER 
+using Game.Events;
+using Game.Core;
 
 namespace Game.Player
 {
+    //DEJO ESTO SEPARADO?
     public class PlayerDefense : MonoBehaviour
     {
         [SerializeField] private GameObject _defenseBody;
@@ -19,7 +19,7 @@ namespace Game.Player
             _playerType = data.PlayerType;
             this.transform.position = data.Position;
 
-            GameplayEvents.OnDefenseActivated += TryEnableDefense;
+            PowerUpEvents.OnDefenseActivated += TryEnableDefense;
         }
 
         private void Start()
@@ -29,7 +29,7 @@ namespace Game.Player
 
         private void OnDestroy()
         {
-            GameplayEvents.OnDefenseActivated -= TryEnableDefense;
+            PowerUpEvents.OnDefenseActivated -= TryEnableDefense;
         }
 
         private void TryEnableDefense(PlayerType playerType, float time)

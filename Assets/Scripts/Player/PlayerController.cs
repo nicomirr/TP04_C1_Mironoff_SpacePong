@@ -1,7 +1,8 @@
 using UnityEngine;
-using Game.Gameplay;
 using Game.Player.Configuration;
 using Game.Markers;
+using Game.Events;
+using Game.Core;
 
 namespace Game.Player
 {    
@@ -52,7 +53,7 @@ namespace Game.Player
             PlayerEvents.OnPlayerMovementSpeedUpdated -= TryChangeMovementSpeed;
             PlayerEvents.OnPlayerColorUpdatedInSettings -= TryChangeColorWithSettings;
             PlayerEvents.OnPlayerSizeUpdatedInSettings -= TryChangeSizeWithSettings;
-            GameplayEvents.OnPaddleGrowthActivated -= TryActivatePaddleGrowth;
+            PowerUpEvents.OnPaddleGrowthActivated -= TryActivatePaddleGrowth;
         }
 
         public void Initialize(PlayerConfigurationSo configuration)
@@ -76,7 +77,7 @@ namespace Game.Player
             PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
             PlayerEvents.OnPlayerColorUpdatedInSettings += TryChangeColorWithSettings;
             PlayerEvents.OnPlayerSizeUpdatedInSettings += TryChangeSizeWithSettings;
-            GameplayEvents.OnPaddleGrowthActivated += TryActivatePaddleGrowth;
+            PowerUpEvents.OnPaddleGrowthActivated += TryActivatePaddleGrowth;
         }
 
 

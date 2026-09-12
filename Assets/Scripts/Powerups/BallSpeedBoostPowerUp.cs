@@ -1,6 +1,6 @@
 using UnityEngine;
-using Game.Gameplay;
 using Game.Data;
+using Game.Events;
 
 namespace Game.PowerUps
 {
@@ -9,7 +9,7 @@ namespace Game.PowerUps
         [SerializeField] private SpeedPowerUpDataSo data;
         private void Activate()
         {
-            GameplayEvents.RaiseBallSpeedBoostActivated(data.SpeedIncrease);
+            PowerUpEvents.RaiseBallSpeedBoostActivated(data.SpeedIncrease);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

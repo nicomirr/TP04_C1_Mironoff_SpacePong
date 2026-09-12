@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Game.UI;
-using Game.Player;
+using Game.Events;
+using Game.Core;
 using Game.Data;
 
 namespace Game.Settings

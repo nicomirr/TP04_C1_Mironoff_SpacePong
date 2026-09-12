@@ -1,6 +1,6 @@
-using Game.Pause;
 using UnityEngine;
 using UnityEngine.UI;
+using Game.Events;
 
 namespace Game.UI
 {

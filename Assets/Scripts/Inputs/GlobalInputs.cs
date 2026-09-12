@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Game.Pause;
+using Game.Events;
 
 namespace Game.Inputs
 {

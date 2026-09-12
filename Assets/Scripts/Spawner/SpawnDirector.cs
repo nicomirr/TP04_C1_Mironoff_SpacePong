@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Game.Gameplay;
+using Game.Events;
 using Game.Spawnables;
 using Game.Data;
 
@@ -14,12 +14,12 @@ namespace Game.Spawner
 
         private void Awake()
         {
-            GameplayEvents.OnRoundStarted += StartSpawnObjectsRoutine;
+            MatchEvents.OnRoundStarted += StartSpawnObjectsRoutine;
         }
 
         private void OnDestroy()
         {
-            GameplayEvents.OnRoundStarted -= StartSpawnObjectsRoutine;
+            MatchEvents.OnRoundStarted -= StartSpawnObjectsRoutine;
         }
 
         private void StartSpawnObjectsRoutine()

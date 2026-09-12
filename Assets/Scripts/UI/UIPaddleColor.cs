@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Game.Player;
+using Game.Core;
 using Game.UI.Slidebars;
+using Game.Events;
 
 namespace Game.UI
 {

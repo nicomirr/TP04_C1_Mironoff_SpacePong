@@ -1,6 +1,5 @@
 using Game.Data;
-using Game.Player;
-using UnityEngine;
+using Game.Core;
 
 public class BallHitTracker 
 {

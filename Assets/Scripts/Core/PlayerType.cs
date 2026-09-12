@@ -1,4 +1,4 @@
-namespace Game.Player
+namespace Game.Core
 {
     public enum PlayerType
     {

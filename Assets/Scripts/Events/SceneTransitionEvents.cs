@@ -1,7 +1,7 @@
 using System;
 using Game.Data;
 
-namespace Game.SceneTransitions
+namespace Game.Events
 {
     public static class SceneTransitionEvents
     {

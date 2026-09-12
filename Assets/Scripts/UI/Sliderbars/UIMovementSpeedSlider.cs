@@ -1,4 +1,5 @@
-using Game.Player;
+using Game.Core;
+using Game.Events;
 
 namespace Game.UI.Slidebars
 {

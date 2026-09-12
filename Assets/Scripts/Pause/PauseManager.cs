@@ -1,4 +1,5 @@
 using UnityEngine;
+using Game.Events;
 
 namespace Game.Pause
 {

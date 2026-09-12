@@ -1,6 +1,6 @@
 using System;
 
-namespace Game.Pause
+namespace Game.Events
 {
     public static class PauseEvents
     {

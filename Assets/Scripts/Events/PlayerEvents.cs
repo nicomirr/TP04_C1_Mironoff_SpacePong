@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using Game.Core;
 
-namespace Game.Player
+namespace Game.Events
 {
     public static class PlayerEvents
     {

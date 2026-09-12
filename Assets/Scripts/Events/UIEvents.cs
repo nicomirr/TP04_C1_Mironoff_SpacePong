@@ -1,8 +1,8 @@
-using Game.Player;
-using System;
 using UnityEngine;
+using System;
+using Game.Core;
 
-namespace Game.UI
+namespace Game.Events
 {
     public static class UIEvents
     {

@@ -1,9 +1,10 @@
-using Game.Gameplay;
 using UnityEngine;
 using Game.Data;
 using Game.Ball;
+using Game.Core;
+using Game.Events;
 
-namespace Game.Player
+namespace Game.PowerUps
 {
     public class DefensePowerUp : MonoBehaviour
     {
@@ -11,7 +12,7 @@ namespace Game.Player
 
         private void Activate(PlayerType playerType)
         {
-            GameplayEvents.RaiseDefenseActivated(playerType, _data.Time);
+            PowerUpEvents.RaiseDefenseActivated(playerType, _data.Time);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
