@@ -20,6 +20,7 @@ namespace Game.Ball
         private BallSpeedBooster _ballSpeedBooster; 
         private BallDirectionCorrector _ballDirectionCorrector;
         private BallHitTracker _ballHitTracker;
+        private BallTrail _ballTrail;
 
         private Rigidbody2D _rb;
 
@@ -33,6 +34,7 @@ namespace Game.Ball
             _ballSpeedBooster = new BallSpeedBooster();
             _ballDirectionCorrector = new BallDirectionCorrector(_data);
             _ballHitTracker = new BallHitTracker(_data);
+            _ballTrail = new BallTrail(GetComponentInChildren<TrailRenderer>());
 
             GameplayEvents.OnBallSpeedBoostActivated += HandleBoostEnable;
         }
@@ -82,6 +84,7 @@ namespace Game.Ball
         private void HandleBoostEnable(float boostValue)
         {
             _ballSpeedBooster.EnableBoost(boostValue);
+            _ballTrail.Enable();
         }
 
         private void HandleBoostDisable(Collision2D collision)
@@ -91,6 +94,7 @@ namespace Game.Ball
             if(collision.gameObject.TryGetComponent<PlayerController>(out var _))
             {
                 _ballSpeedBooster.DisableBoost();
+                _ballTrail.Disable();
             }
         }
 

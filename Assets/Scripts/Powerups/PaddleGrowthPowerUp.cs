@@ -2,6 +2,7 @@ using UnityEngine;
 using Game.Gameplay;
 using Game.Player;
 using Game.Data;
+using Game.Ball;
 
 public class PaddleGrowthPowerUp : MonoBehaviour
 {
@@ -14,9 +15,9 @@ public class PaddleGrowthPowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<BallHitTracker>(out BallHitTracker ballHitTracker))
+        if(collision.TryGetComponent<BallController>(out var ball))
         {
-            Activate(ballHitTracker.LastPlayer);
+            Activate(ball.LastPlayerHit);
             this.gameObject.SetActive(false);
         }        
     }

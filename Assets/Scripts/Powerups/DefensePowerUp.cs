@@ -16,9 +16,9 @@ namespace Game.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent<BallController>(out var ballController))
+            if (collision.TryGetComponent<BallController>(out var ball))
             {
-                Activate(ballController.LastPlayerHit);
+                Activate(ball.LastPlayerHit);
                 this.gameObject.SetActive(false);
             }
         }
