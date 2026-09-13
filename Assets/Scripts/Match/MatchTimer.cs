@@ -11,12 +11,16 @@ namespace Game.Match
 
         private float _roundTimer;
 
+        private int _lastDisplayedSecond = -1;
+
         private bool _isRunning;
 
         public MatchTimer(MatchConfigSo data, TMP_Text timerText)
         {
             _roundTime = data.RoundTime;
             _timerText = timerText;
+
+            UpdateTimerText(0);
         }
 
         public void StartTimer()
@@ -30,31 +34,28 @@ namespace Game.Match
 
             _roundTimer += Time.deltaTime;
 
-            UpdateTimerText();
-        }
-
-        private void UpdateTimerText()
-        {
-            int minutes = 0;
-            int seconds = 0;
             int elapsedTime = (int)_roundTimer;
 
-            while (elapsedTime >= 60)
-            {
-                elapsedTime -= 60;
-                minutes++;
-            }
+            if (elapsedTime == _lastDisplayedSecond)
+                return;
 
-            seconds = elapsedTime;
+            UpdateTimerText(elapsedTime);
+        }
 
-            _timerText.text = minutes.ToString("D2") + ":" +
-                seconds.ToString("D2");
+        private void UpdateTimerText(int elapsedTime)
+        {
+            _lastDisplayedSecond = elapsedTime;
+
+            int minutes = elapsedTime / 60;
+            int seconds = elapsedTime % 60;
+
+            _timerText.SetText("{0:00}:{1:00}", minutes, seconds);
         }
 
         public void ResetTimer()
         {
             _roundTimer = 0;
-            UpdateTimerText();
+            UpdateTimerText(0);
         }
 
         public void StopTimer()
@@ -68,4 +69,3 @@ namespace Game.Match
         }
     }
 }
-

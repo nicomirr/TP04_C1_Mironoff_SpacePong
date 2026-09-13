@@ -29,6 +29,8 @@ namespace Game.UI
 
         private void OnMainMenuClicked()
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
+
             PauseEvents.RaiseContinueClicked();
             SceneTransitionEvents.RaiseSceneChangeRequested(_sceneToLoad);
         }

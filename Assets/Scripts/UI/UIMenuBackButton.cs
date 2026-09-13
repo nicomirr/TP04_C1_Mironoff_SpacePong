@@ -21,6 +21,7 @@ namespace Game.UI
 
         private void OnBackClicked()
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
             UIEvents.RaiseBackClicked();
         }
     }

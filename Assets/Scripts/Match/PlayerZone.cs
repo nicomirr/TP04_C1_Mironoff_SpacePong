@@ -8,12 +8,12 @@ namespace Game.Match
 {
     public class PlayerZone : MonoBehaviour
     {
-        [SerializeField] private PlayerTypeConfigSo _data;
+        [SerializeField] private PlayerTypeConfigSo _pointRecipientData;
         private PlayerType _pointRecipient;
 
         private void Start()
         {
-            _pointRecipient = _data.Player;
+            _pointRecipient = _pointRecipientData.Player;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

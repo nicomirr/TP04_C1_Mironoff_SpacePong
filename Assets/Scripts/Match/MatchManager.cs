@@ -95,7 +95,8 @@ namespace Game.Match
                 yield return MatchFinishedRoutine(playerType);
                 yield break;
             }
-            
+
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ScoreUpSound);
             MatchEvents.RaisePointScored(playerType);
 
             yield return new WaitForSeconds(_data.TimeBetweenRounds);
@@ -114,6 +115,7 @@ namespace Game.Match
 
             yield return new WaitForSeconds(_data.WinningDisplayDelayTime);
 
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.WinSound);
             MatchEvents.RaiseMatchFinished(playerType);
 
             yield return new WaitForSeconds(_data.WinningDisplayTime);

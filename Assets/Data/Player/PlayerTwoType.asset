@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c0806a91b6f8d4589157bdfe77afb6, type: 3}
   m_Name: PlayerTwoType
   m_EditorClassIdentifier: Assembly-CSharp::ScoreUIConfigSo
-  _player: 0
+  _player: 1

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1528972443912949767}
   - component: {fileID: -3272129743222762809}
   - component: {fileID: -6709318338446177720}
+  - component: {fileID: -4590467193330001779}
   m_Layer: 0
   m_Name: DefencePowerUp
   m_TagString: Untagged
@@ -142,3 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefensePowerUp
   _data: {fileID: 11400000, guid: a2debd33bcf97b54f8740cc211d70d09, type: 2}
+--- !u!114 &-4590467193330001779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311376462074540909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9d0a0a958afbb4daf2e9d134034489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Markers.PowerupMarker

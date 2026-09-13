@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1528972443912949767}
   - component: {fileID: -3272129743222762809}
   - component: {fileID: 4449153484080015542}
+  - component: {fileID: -9121189428286671289}
   m_Layer: 0
   m_Name: PaddleGrowthPowerUp
   m_TagString: Untagged
@@ -142,3 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SizeBoostPowerUp
   _data: {fileID: 11400000, guid: cdea4d349532f894f842bc7d161cfab3, type: 2}
+--- !u!114 &-9121189428286671289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311376462074540909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9d0a0a958afbb4daf2e9d134034489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Markers.PowerupMarker

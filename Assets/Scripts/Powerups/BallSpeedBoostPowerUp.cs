@@ -14,6 +14,8 @@ namespace Game.PowerUps
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.BallSpeedPowSound);
+
             Activate();
             this.gameObject.SetActive(false);
         }

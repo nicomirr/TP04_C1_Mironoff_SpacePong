@@ -31,23 +31,31 @@ namespace Game.UI
 
         protected virtual void OnPlayClicked()
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
+
             HidePanel();
         }
 
         private void OnSettingsClicked()
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
+
             HidePanel();
             UIEvents.RaiseSettingsClicked();
         }
 
         private void OnCreditsClicked()
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
+
             HidePanel();
             UIEvents.RaiseCreditsClicked();
         }
 
         private void OnExitClicked()
         {
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
+
             Application.Quit();
 
 #if UNITY_EDITOR

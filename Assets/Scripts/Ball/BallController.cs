@@ -4,6 +4,7 @@ using Game.Core;
 using Game.Data;
 using Game.Events;
 using System.Collections;
+using Game.Markers;
 
 namespace Game.Ball
 {    
@@ -11,7 +12,7 @@ namespace Game.Ball
 
     public class BallController : MonoBehaviour
     {
-        [SerializeField] private BallConfigurationSo _data;
+        [SerializeField] private BallConfigurationSo _data;               
 
         public PlayerType LastPlayerHit => _ballHitTracker.LastPlayer;
 
@@ -53,6 +54,7 @@ namespace Game.Ball
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            HandleAudio(collision.gameObject);
             HandleBoostDisable(collision);
             HandleLastPlayerHitTracking(collision.gameObject);            
         }
@@ -82,6 +84,7 @@ namespace Game.Ball
             _ballSpeed.Reset();
             _ballSpeedBooster.Reset();
             _ballHitTracker.Reset();
+            _ballTrail.Disable();
             _ballPositionResetter.Reset();
         }
               
@@ -115,7 +118,7 @@ namespace Game.Ball
         {
             if (!_ballSpeedBooster.IsBoosted) return;
 
-            if(collision.gameObject.TryGetComponent<PlayerController>(out var _))
+            if(collision.gameObject.TryGetComponent<PlayerController>(out _))
             {
                 _ballSpeedBooster.DisableBoost();
                 _ballTrail.Disable();
@@ -132,6 +135,14 @@ namespace Game.Ball
                     _ballSpeed.TryIncreaseSpeed();
             }
         }        
+
+        private void HandleAudio(GameObject gameObject)
+        {
+            if (gameObject.TryGetComponent<PowerupMarker>(out _)) return;
+
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.BallSound);
+                
+        }
     }
 }
 

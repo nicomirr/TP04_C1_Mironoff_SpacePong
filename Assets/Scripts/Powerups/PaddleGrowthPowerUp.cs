@@ -19,6 +19,8 @@ namespace Game.PowerUps
         {
             if (collision.TryGetComponent<BallController>(out var ball))
             {
+                AudioEvents.RaiseSFXAudioPlayRequested(AudioType.GrowthPowSound);
+
                 Activate(ball.LastPlayerHit);
                 this.gameObject.SetActive(false);
             }
