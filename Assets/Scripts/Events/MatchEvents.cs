@@ -6,9 +6,13 @@ namespace Game.Events
     public static class MatchEvents
     {
         public static event Action OnRoundStarted;
+
         public static event Action OnRoundFinished;
+
         public static event Action<PlayerType> OnPointScored;
+
         public static event Action<PlayerType,int> OnScoreChanged;
+
         public static event Action<PlayerType> OnMatchFinished;
         
         public static void RaiseRoundStarted()

@@ -4,17 +4,15 @@ namespace Game.Events
 {
     public static class PauseEvents
     {
-        //Se dispara en GlobalInputs, escucha PauseManager
-        public static event Action OnPauseInputPressed;
-
+        public static event Action OnPauseInputPressed;    
         
         public static event Action OnGamePausedByInput;
 
-
         public static event Action OnGameUnpausedByInput;
 
-        //Se dispara en UIPauseMenu, escucha PauseManager
         public static event Action OnContinueButtonClicked;
+
+        public static event Action OnPauseInputDisableRequest;
 
         public static void RaisePauseInputPressed()
         {
@@ -36,6 +34,10 @@ namespace Game.Events
             OnContinueButtonClicked?.Invoke();
         }
 
+        public static void RaisePauseInputDisableRequest()
+        {
+            OnPauseInputDisableRequest?.Invoke();
+        }
     }
 }
 

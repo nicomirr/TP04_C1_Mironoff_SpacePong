@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.MatchConfigSo
   _timeBetweenRounds: 2
   _pointsToWin: 3
+  _winningDisplayDelayTime: 1
+  _winningDisplayTime: 4
+  _mainMenuScene: {fileID: 11400000, guid: 7dc3506aa4346f1439280c7776ecdef6, type: 2}

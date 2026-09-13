@@ -1,11 +1,9 @@
 using UnityEngine;
+using System.Collections;
 using Game.Core;
 using Game.Data;
 using Game.Events;
-using System.Collections;
-
-//FALTA QUE AL TERMINAR VUELVA AL MENU
-//FALTA QUE AL PASAR 20 SEGUNDOS SE ANOTE PUNTO (USAR TIMER)
+using TMPro;
 
 namespace Game.Match
 {
@@ -13,23 +11,39 @@ namespace Game.Match
     {
         [SerializeField] private MatchConfigSo _data;
 
+        [SerializeField] private TMP_Text _roundTimeText;
+
         private ScoreManager _scoreManager;
+        private MatchTimer _matchTimer;
 
         private void Awake()
         {
             _scoreManager = new ScoreManager(_data.PointsToWin);
+            _matchTimer = new MatchTimer(_data, _roundTimeText);
 
             MatchEvents.OnPointScored += PointScored;
+            BallEvents.OnBallLaunched += StartTimer;
         }
 
         private void Start()
         {
-            MatchEvents.RaiseRoundStarted();
+            MatchEvents.RaiseRoundStarted();            
+        }
+
+        private void Update()
+        {
+            _matchTimer.UpdateTimer();
         }
 
         private void OnDestroy()
         {
             MatchEvents.OnPointScored -= PointScored;
+            BallEvents.OnBallLaunched -= StartTimer;
+        }
+
+        private void StartTimer()
+        {
+            _matchTimer.StartTimer();
         }
 
         private void PointScored(PlayerType playerType)
@@ -39,21 +53,36 @@ namespace Game.Match
 
         private IEnumerator PointScoredRoutine(PlayerType playerType)
         {
+            _matchTimer.StopTimer();
             MatchEvents.RaiseRoundFinished();
-
+        
             bool matchFinished = _scoreManager.AddPoint(playerType);
 
             if (matchFinished)
             {
-                MatchEvents.RaiseMatchFinished(playerType);
+                yield return MatchFinishedRoutine(playerType);
                 yield break;
             }
 
             yield return new WaitForSeconds(_data.TimeBetweenRounds);
 
-            MatchEvents.RaiseRoundStarted();
-        }
+            _matchTimer.ResetTimer();
 
+            MatchEvents.RaiseRoundStarted();
+        }     
+        
+        private IEnumerator MatchFinishedRoutine(PlayerType playerType)
+        {
+            PauseEvents.RaisePauseInputDisableRequest();
+
+            yield return new WaitForSeconds(_data.WinningDisplayDelayTime);
+
+            MatchEvents.RaiseMatchFinished(playerType);
+
+            yield return new WaitForSeconds(_data.WinningDisplayTime);
+
+            SceneTransitionEvents.RaiseSceneChangeRequested(_data.MainMenuScene);
+        }
     }
 }
 

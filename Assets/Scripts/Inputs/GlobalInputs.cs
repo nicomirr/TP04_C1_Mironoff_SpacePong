@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Events;
+using Game.Core;
 
 namespace Game.Inputs
 {
@@ -22,11 +23,13 @@ namespace Game.Inputs
             _globalControls.Global.Enable();
 
             _pauseInput.performed += OnPausePressed;
+            PauseEvents.OnPauseInputDisableRequest += DisableGlobalInputs;
         }
 
         private void OnDisable()
         {
             _pauseInput.performed -= OnPausePressed;
+            PauseEvents.OnPauseInputDisableRequest -= DisableGlobalInputs;
 
             _globalControls.Global.Disable();
         }
@@ -34,6 +37,11 @@ namespace Game.Inputs
         private void OnPausePressed(InputAction.CallbackContext ctx)
         {
             PauseEvents.RaisePauseInputPressed();
+        }
+
+        private void DisableGlobalInputs()
+        {            
+            this.gameObject.SetActive(false);
         }
     }
 

@@ -3,15 +3,19 @@ using Game.Core;
 using Game.Markers;
 using Game.Events;
 
-public class ScoreZone : MonoBehaviour
+namespace Game.Match
 {
-    [SerializeField] private PlayerType _pointRecipient;
-        
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class ScoreZone : MonoBehaviour
     {
-        if(collision.gameObject.TryGetComponent<BallMarker>(out var _))
+        [SerializeField] private PlayerType _pointRecipient;
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            MatchEvents.RaisePointScored(_pointRecipient);
+            if (collision.gameObject.TryGetComponent<BallMarker>(out var _))
+            {
+                MatchEvents.RaisePointScored(_pointRecipient);
+            }
         }
     }
 }
+

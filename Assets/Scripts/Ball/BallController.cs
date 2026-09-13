@@ -3,6 +3,7 @@ using Game.Player;
 using Game.Core;
 using Game.Data;
 using Game.Events;
+using System.Collections;
 
 namespace Game.Ball
 {    
@@ -64,8 +65,14 @@ namespace Game.Ball
                         
         private void LaunchBall()
         {
+            StartCoroutine(LaunchBallRoutine());
+        }
+
+        private IEnumerator LaunchBallRoutine()
+        {
             ResetBall();
-            StartCoroutine(_ballLauncher.LaunchRoutine());
+            yield return _ballLauncher.LaunchRoutine();
+            BallEvents.RaiseBallLaunched();
         }
 
         private void ResetBall()

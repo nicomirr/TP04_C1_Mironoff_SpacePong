@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc09a3480b7b8144192050ef5d411f01, type: 3}
   m_Name: PlayerTwoWinText
   m_EditorClassIdentifier: Assembly-CSharp::WinnersTextSo
-  _playerType: 0
+  _playerType: 1
   _playerText: Player 2

@@ -32,6 +32,8 @@ namespace Game.SceneTransitions
 
         private IEnumerator ChangeSceneRoutine(string sceneName, float transitionTime)
         {
+            Time.timeScale = 1f;
+
             _fadeBackground.FadeOut();
             _transitionObjectsDisabler.DisableObjects(_sceneObjectsToDisableOnTransition);
                         
