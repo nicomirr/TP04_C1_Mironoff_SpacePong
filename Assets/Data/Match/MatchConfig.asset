@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94708e87ee177b142a361156d993139b, type: 3}
   m_Name: MatchConfig
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.MatchConfigSo
+  _roundTime: 180
   _timeBetweenRounds: 2
   _pointsToWin: 3
   _winningDisplayDelayTime: 1

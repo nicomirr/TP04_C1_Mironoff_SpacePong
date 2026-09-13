@@ -9,6 +9,8 @@ namespace Game.Events
 
         public static event Action OnRoundFinished;
 
+        public static event Action<PlayerType> OnSideChanged;
+
         public static event Action<PlayerType> OnPointScored;
 
         public static event Action<PlayerType,int> OnScoreChanged;
@@ -24,6 +26,11 @@ namespace Game.Events
         {
             OnRoundFinished?.Invoke();
         }              
+
+        public static void RaiseSideChanged(PlayerType playerType)
+        {
+            OnSideChanged?.Invoke(playerType);
+        }
 
         public static void RaisePointScored(PlayerType playerType)
         {
