@@ -1,8 +1,8 @@
+using UnityEngine;
 using Game.Events;
 using TMPro;
-using UnityEngine;
 
-public class CurrentRoundUI : MonoBehaviour
+public class UICurrentRound : MonoBehaviour
 {
     private TMP_Text _roundsText;
 

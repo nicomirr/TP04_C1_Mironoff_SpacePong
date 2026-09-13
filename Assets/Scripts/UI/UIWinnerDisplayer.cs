@@ -6,8 +6,8 @@ using Game.Events;
 
 namespace Game.UI
 {
-    public class WinnerDisplayerUI : MonoBehaviour
-    {
+    public class UIWinnerDisplayer : MonoBehaviour
+    {        
         [SerializeField] private List<WinnersTextSo> _winnersText = new List<WinnersTextSo>();
         private Dictionary<PlayerType, string> _winnersTextDictionary;
 

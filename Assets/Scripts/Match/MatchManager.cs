@@ -107,12 +107,7 @@ namespace Game.Match
             _currentRound++;
             MatchEvents.RaiseRoundStarted(_currentRound);
         }     
-
-        private void UpdateCurrentRoundText()
-        {
-
-        }
-        
+                
         private IEnumerator MatchFinishedRoutine(PlayerType playerType)
         {
             PauseEvents.RaisePauseInputDisableRequest();

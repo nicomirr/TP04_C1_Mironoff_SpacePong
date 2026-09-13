@@ -7,9 +7,9 @@ using Game.Events;
 
 namespace Game.UI
 {
-    public class PlayerScoreUI : MonoBehaviour
+    public class UIPlayerScore : MonoBehaviour
     {
-        [SerializeField] private ScoreUIConfigSo _scoreUIConfigSo;
+        [SerializeField] private PlayerTypeConfigSo _scoreUIConfigSo;
         private TMP_Text _scoreText;
 
         private void Awake()

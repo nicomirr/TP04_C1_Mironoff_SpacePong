@@ -6,12 +6,12 @@ namespace Game.Match
 {
     public class MatchTimer
     {
-        private bool _isRunning;
-
-        private int _roundTime;
-        private TMP_Text _timerText;
+        private readonly int _roundTime;
+        private readonly TMP_Text _timerText;
 
         private float _roundTimer;
+
+        private bool _isRunning;
 
         public MatchTimer(MatchConfigSo data, TMP_Text timerText)
         {

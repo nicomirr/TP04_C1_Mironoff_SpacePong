@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7884eeb4e3812f54195175c3cdd7b63b, type: 3}
-  m_Name: PlayerOneScoreUI
+  m_Script: {fileID: 11500000, guid: 48c0806a91b6f8d4589157bdfe77afb6, type: 3}
+  m_Name: PlayerOneType
   m_EditorClassIdentifier: Assembly-CSharp::ScoreUIConfigSo
   _player: 0
