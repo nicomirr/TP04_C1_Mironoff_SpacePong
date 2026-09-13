@@ -21,6 +21,12 @@ namespace Game.UI
             _mainMenuButton.onClick.RemoveAllListeners();           
         }
 
+        protected override void OnPlayClicked()
+        {
+            PauseEvents.RaiseContinueClicked();
+            base.OnPlayClicked();
+        }
+
         private void OnMainMenuClicked()
         {
             PauseEvents.RaiseContinueClicked();

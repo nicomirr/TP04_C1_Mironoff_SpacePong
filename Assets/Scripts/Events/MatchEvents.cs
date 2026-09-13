@@ -5,11 +5,13 @@ namespace Game.Events
 {
     public static class MatchEvents
     {
-        public static event Action OnRoundStarted;
+        public static event Action<int> OnRoundStarted;
 
         public static event Action OnRoundFinished;
 
         public static event Action<PlayerType> OnSideChanged;
+
+        public static event Action<PlayerType> OnGoalZoneReached;
 
         public static event Action<PlayerType> OnPointScored;
 
@@ -17,9 +19,9 @@ namespace Game.Events
 
         public static event Action<PlayerType> OnMatchFinished;
         
-        public static void RaiseRoundStarted()
+        public static void RaiseRoundStarted(int currentRound)
         {
-            OnRoundStarted?.Invoke();
+            OnRoundStarted?.Invoke(currentRound);
         }
 
         public static void RaiseRoundFinished()
@@ -30,6 +32,11 @@ namespace Game.Events
         public static void RaiseSideChanged(PlayerType playerType)
         {
             OnSideChanged?.Invoke(playerType);
+        }
+
+        public static void RaiseGoalZoneReached(PlayerType playerType)
+        {
+            OnGoalZoneReached?.Invoke(playerType);
         }
 
         public static void RaisePointScored(PlayerType playerType)

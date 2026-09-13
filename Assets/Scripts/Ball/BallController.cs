@@ -63,7 +63,7 @@ namespace Game.Ball
             PowerUpEvents.OnBallSpeedBoostActivated -= HandleBoostEnable;
         }
                         
-        private void LaunchBall()
+        private void LaunchBall(int _)
         {
             StartCoroutine(LaunchBallRoutine());
         }

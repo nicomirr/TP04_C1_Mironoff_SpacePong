@@ -5,7 +5,7 @@ using Game.Data;
 using Game.Events;
 
 
-namespace Game.Match
+namespace Game.UI
 {
     public class PlayerScoreUI : MonoBehaviour
     {

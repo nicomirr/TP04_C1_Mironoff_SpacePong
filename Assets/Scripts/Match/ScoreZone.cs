@@ -13,7 +13,7 @@ namespace Game.Match
         {
             if (collision.gameObject.TryGetComponent<BallMarker>(out var _))
             {
-                MatchEvents.RaisePointScored(_pointRecipient);
+                MatchEvents.RaiseGoalZoneReached(_pointRecipient);
             }
         }
     }

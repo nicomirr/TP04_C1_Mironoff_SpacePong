@@ -26,7 +26,7 @@ namespace Game.Spawner
             MatchEvents.OnRoundFinished -= StopObjectSpawners;
         }
 
-        private void StartObjectSpawners()
+        private void StartObjectSpawners(int _)
         {
             _currentSpawnableObject = null;
             StartCoroutine(SpawnObjectsRoutine());

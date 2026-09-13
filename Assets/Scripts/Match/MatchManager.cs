@@ -20,19 +20,22 @@ namespace Game.Match
 
         private bool _isRoundEnding;
 
+        private int _currentRound;
+
         private void Awake()
         {
             _scoreManager = new ScoreManager(_data.PointsToWin);
             _matchTimer = new MatchTimer(_data, _roundTimeText);
 
-            MatchEvents.OnPointScored += PointScored;
+            MatchEvents.OnGoalZoneReached += PointScored;
             MatchEvents.OnSideChanged += ChangeTimeOutWinner;
             BallEvents.OnBallLaunched += StartTimer;
         }
 
         private void Start()
         {
-            MatchEvents.RaiseRoundStarted();            
+            _currentRound = 1;
+            MatchEvents.RaiseRoundStarted(_currentRound);            
         }
 
         private void Update()
@@ -43,7 +46,7 @@ namespace Game.Match
 
         private void OnDestroy()
         {
-            MatchEvents.OnPointScored -= PointScored;
+            MatchEvents.OnGoalZoneReached -= PointScored;
             MatchEvents.OnSideChanged -= ChangeTimeOutWinner;
             BallEvents.OnBallLaunched -= StartTimer;
         }
@@ -92,6 +95,8 @@ namespace Game.Match
                 yield return MatchFinishedRoutine(playerType);
                 yield break;
             }
+            
+            MatchEvents.RaisePointScored(playerType);
 
             yield return new WaitForSeconds(_data.TimeBetweenRounds);
 
@@ -99,8 +104,14 @@ namespace Game.Match
 
             _isRoundEnding = false;
 
-            MatchEvents.RaiseRoundStarted();
+            _currentRound++;
+            MatchEvents.RaiseRoundStarted(_currentRound);
         }     
+
+        private void UpdateCurrentRoundText()
+        {
+
+        }
         
         private IEnumerator MatchFinishedRoutine(PlayerType playerType)
         {

@@ -11,6 +11,7 @@ namespace Game.Match
 
         private readonly int _pointsToWin;
 
+
         public ScoreManager(int pointsToWin)
         {
             _pointsToWin = pointsToWin;

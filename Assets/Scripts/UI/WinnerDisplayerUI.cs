@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Game.Core;
 using Game.Events;
 
-namespace Game.Match
+namespace Game.UI
 {
-    public class WinnerUI : MonoBehaviour
+    public class WinnerDisplayerUI : MonoBehaviour
     {
         [SerializeField] private List<WinnersTextSo> _winnersText = new List<WinnersTextSo>();
         private Dictionary<PlayerType, string> _winnersTextDictionary;
@@ -34,21 +34,39 @@ namespace Game.Match
 
         private void OnEnable()
         {
-            MatchEvents.OnMatchFinished += DisplayWinner;
+            MatchEvents.OnRoundStarted += HideWinnerText;
+            MatchEvents.OnPointScored += DisplayRoundWinner;
+            MatchEvents.OnMatchFinished += DisplayMatchWinner;
         }
 
         private void OnDisable()
         {
-            MatchEvents.OnMatchFinished -= DisplayWinner;
+            MatchEvents.OnRoundStarted -= HideWinnerText;
+            MatchEvents.OnPointScored -= DisplayRoundWinner;
+            MatchEvents.OnMatchFinished -= DisplayMatchWinner;
         }
 
-        private void DisplayWinner(PlayerType player)
+        private void HideWinnerText(int _)
+        {
+            _canvasGroup.alpha = 0f;
+        }
+
+        private void DisplayRoundWinner(PlayerType player)
+        {
+            string winner = _winnersTextDictionary[player];
+
+            _winnerText.text = "Point to " + winner;
+            _canvasGroup.alpha = 1f;
+        }
+
+        private void DisplayMatchWinner(PlayerType player)
         {
             string winner = _winnersTextDictionary[player];
 
             _winnerText.text = winner + " wins";
             _canvasGroup.alpha = 1f;
-        }
+        }               
+
     }
 }
 
