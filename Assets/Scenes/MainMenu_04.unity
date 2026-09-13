@@ -1865,6 +1865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8161449530715750119}
+  - component: {fileID: 9096038570982385134}
   - component: {fileID: 5822241309924471798}
   - component: {fileID: 9096038570982385133}
   - component: {fileID: 4553959833676121324}
@@ -2978,6 +2979,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9096038570982385134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2807548522397487304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b03c1745b4819f4a9e9c897d899c71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIExitButtonDisabler
 --- !u!1 &9116680205134159106
 GameObject:
   m_ObjectHideFlags: 0
