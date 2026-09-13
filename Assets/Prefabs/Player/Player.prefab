@@ -82,8 +82,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2116477857079057354}
-  - component: {fileID: 3456183137918270661}
   - component: {fileID: 907623107381791717}
+  - component: {fileID: 3456183137918270661}
   - component: {fileID: 353677419541960246}
   m_Layer: 0
   m_Name: Image
@@ -107,6 +107,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1222409918594708915}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &907623107381791717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962066523784198793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d7edf56682d954ba98c25612ae122d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaddleVisual
 --- !u!212 &3456183137918270661
 SpriteRenderer:
   serializedVersion: 2
@@ -166,18 +178,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &907623107381791717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962066523784198793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d7edf56682d954ba98c25612ae122d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PaddleVisual
 --- !u!61 &353677419541960246
 BoxCollider2D:
   m_ObjectHideFlags: 0

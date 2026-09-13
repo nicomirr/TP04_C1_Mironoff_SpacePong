@@ -3388,10 +3388,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4165016392687688742}
+  - component: {fileID: 6863186263977501870}
   - component: {fileID: 9099062464715475526}
   - component: {fileID: 2272708658143314560}
   - component: {fileID: 8859838057390187559}
-  - component: {fileID: 6863186263977501870}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -3418,6 +3418,18 @@ RectTransform:
   m_AnchoredPosition: {x: 96.681274, y: 100.08789}
   m_SizeDelta: {x: 108.022, y: 105.9561}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &6863186263977501870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3929440921826294430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831827264b94d61438d9ccf1d10684e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIMenuBackButton
 --- !u!222 &9099062464715475526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3500,18 +3512,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6863186263977501870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929440921826294430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 831827264b94d61438d9ccf1d10684e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIMenuBackButton
 --- !u!1 &3960380139326032174
 GameObject:
   m_ObjectHideFlags: 0
@@ -7077,10 +7077,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8992075593380291602}
+  - component: {fileID: 7239343320992531917}
   - component: {fileID: 2022915045601736047}
   - component: {fileID: 3579852812990355449}
   - component: {fileID: 2942350035596083900}
-  - component: {fileID: 7239343320992531917}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -7115,6 +7115,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7239343320992531917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7073411622813733802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad8e200ebe80da498f202fde03b8f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIPanel
+  _onDisplayAlpha: 1
 --- !u!222 &2022915045601736047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7165,19 +7178,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &7239343320992531917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7073411622813733802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad8e200ebe80da498f202fde03b8f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIPanel
-  _onDisplayAlpha: 1
 --- !u!1 &7076635774691762503
 GameObject:
   m_ObjectHideFlags: 0

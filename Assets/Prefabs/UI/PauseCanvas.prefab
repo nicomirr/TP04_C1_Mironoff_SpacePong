@@ -369,10 +369,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 388090744361287042}
+  - component: {fileID: 7180940671707835200}
   - component: {fileID: 8756037910341002973}
   - component: {fileID: 1655329175763173165}
   - component: {fileID: 1620831714188284270}
-  - component: {fileID: 7180940671707835200}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -404,6 +404,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 812, y: 393}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7180940671707835200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920624685372729013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29afd43a369dcea48906321595ff31d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIPausePanel
+  _onDisplayAlpha: 1
+  _btnPlay: {fileID: 1009319507096172104}
+  _btnSettings: {fileID: 4303997262178823428}
+  _btnCredits: {fileID: 5369047436556439653}
+  _btnExit: {fileID: 1414460073819539863}
+  _sceneToLoad: {fileID: 0}
+  _mainMenuButton: {fileID: 0}
 --- !u!222 &8756037910341002973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -454,23 +473,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
---- !u!114 &7180940671707835200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6920624685372729013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29afd43a369dcea48906321595ff31d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIPausePanel
-  _onDisplayAlpha: 1
-  _btnPlay: {fileID: 1009319507096172104}
-  _btnSettings: {fileID: 4303997262178823428}
-  _btnCredits: {fileID: 5369047436556439653}
-  _btnExit: {fileID: 1414460073819539863}
 --- !u!1 &7898539896239457382
 GameObject:
   m_ObjectHideFlags: 0
