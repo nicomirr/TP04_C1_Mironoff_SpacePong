@@ -8,6 +8,8 @@ namespace Game.Events
         public static event Action OnRoundStarted;
         public static event Action OnRoundFinished;
         public static event Action<PlayerType> OnPointScored;
+        public static event Action<PlayerType,int> OnScoreChanged;
+        public static event Action<PlayerType> OnMatchFinished;
         
         public static void RaiseRoundStarted()
         {
@@ -22,6 +24,16 @@ namespace Game.Events
         public static void RaisePointScored(PlayerType playerType)
         {
             OnPointScored?.Invoke(playerType);
+        }
+
+        public static void RaiseScoreChanged(PlayerType playerType, int score)
+        {
+            OnScoreChanged?.Invoke(playerType, score);
+        }
+
+        public static void RaiseMatchFinished(PlayerType playerType)
+        {
+            OnMatchFinished?.Invoke(playerType);
         }
     }
 }

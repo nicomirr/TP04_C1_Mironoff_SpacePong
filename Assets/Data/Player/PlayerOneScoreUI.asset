@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53c469eea0509948a0b82c3ce2e4fb0, type: 3}
-  m_Name: LimitsPlayerTwo
-  m_EditorClassIdentifier: Assembly-CSharp::ViewportLimitsSo
-  _mixX: 0.65
-  _maxX: 0.95
-  _minY: 0.1
-  _maxY: 0.7
+  m_Script: {fileID: 11500000, guid: 7884eeb4e3812f54195175c3cdd7b63b, type: 3}
+  m_Name: PlayerOneScoreUI
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreUIConfigSo
+  _player: 0

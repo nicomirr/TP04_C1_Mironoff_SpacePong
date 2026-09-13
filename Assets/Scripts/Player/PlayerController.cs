@@ -155,8 +155,6 @@ namespace Game.Player
 
             StartCoroutine(_paddleScaler.GrowPaddleRoutine(time, growthFactor));
         }        
-
-
     }
 }
 

@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53c469eea0509948a0b82c3ce2e4fb0, type: 3}
-  m_Name: LimitsPlayerTwo
-  m_EditorClassIdentifier: Assembly-CSharp::ViewportLimitsSo
-  _mixX: 0.65
-  _maxX: 0.95
-  _minY: 0.1
-  _maxY: 0.7
+  m_Script: {fileID: 11500000, guid: fc09a3480b7b8144192050ef5d411f01, type: 3}
+  m_Name: PlayerOneWinText
+  m_EditorClassIdentifier: Assembly-CSharp::WinnersTextSo
+  _playerType: 0
+  _playerText: Player 1
