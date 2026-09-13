@@ -6,6 +6,8 @@ namespace Game.Events
 {
     public static class UIEvents
     {
+        public static event Action<bool> OnChangeCursorVisibilityRequest;
+
         public static event Action OnSettingsClicked;
         public static event Action OnCreditsClicked;
         public static event Action OnBackClicked;
@@ -18,6 +20,11 @@ namespace Game.Events
 
         public static event Action<PlayerType> OnSizeSliderInitialValueRequested;
         public static event Action<PlayerType, float> OnSizeSliderValueInitialized;
+
+        public static void RaiseChangeCursorVisibilityRequest(bool isVisible)
+        {
+            OnChangeCursorVisibilityRequest?.Invoke(isVisible);
+        }
 
         public static void RaiseSettingsClicked()
         {

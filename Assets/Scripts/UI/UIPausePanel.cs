@@ -32,6 +32,8 @@ namespace Game.UI
             AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
 
             PauseEvents.RaiseContinueClicked();
+            UIEvents.RaiseChangeCursorVisibilityRequest(true);
+
             SceneTransitionEvents.RaiseSceneChangeRequested(_sceneToLoad);
         }
     }

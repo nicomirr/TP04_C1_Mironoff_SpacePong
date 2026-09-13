@@ -22,7 +22,9 @@ namespace Game.Pause
         private void TogglePauseState()
         {           
             _gamePaused = !_gamePaused;
-            
+
+            UIEvents.RaiseChangeCursorVisibilityRequest(_gamePaused);
+
             Time.timeScale = _gamePaused ? 0f : 1f;
 
             if (_gamePaused)

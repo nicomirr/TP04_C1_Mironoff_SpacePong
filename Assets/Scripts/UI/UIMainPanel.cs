@@ -31,7 +31,8 @@ namespace Game.UI
 
         protected virtual void OnPlayClicked()
         {
-            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);
+            UIEvents.RaiseChangeCursorVisibilityRequest(false);
+            AudioEvents.RaiseSFXAudioPlayRequested(AudioType.ButtonClick);            
 
             HidePanel();
         }
