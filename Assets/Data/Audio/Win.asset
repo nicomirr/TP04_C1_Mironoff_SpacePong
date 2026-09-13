@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Win
   m_EditorClassIdentifier: Assembly-CSharp::Game.Data.AudioDataSo
   _audioType: 6
-  _audioClip: {fileID: 8300000, guid: fbe7cff5c9bc5a949a715d8cf7ede7c0, type: 3}
+  _audioClip: {fileID: 8300000, guid: 9e96d57b2b9fd104791d3b1dbf26a9d3, type: 3}

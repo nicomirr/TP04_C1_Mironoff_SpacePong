@@ -3522,6 +3522,50 @@ MonoBehaviour:
   _spawners:
   - {fileID: 763999697}
   - {fileID: 1385694190}
+--- !u!1 &1567367268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567367270}
+  - component: {fileID: 1567367269}
+  m_Layer: 0
+  m_Name: AudioSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1567367269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567367268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c802012ae8c1a6d49b0ab605d9041676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Settings.AudioSettings
+--- !u!4 &1567367270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567367268}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.85205, y: 0.96912, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1688696638
 GameObject:
   m_ObjectHideFlags: 0
@@ -4781,6 +4825,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a036b5ef4fdc87479d57a6098745b92, type: 3}
+--- !u!82 &3579839476562579255 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5080990690991084016, guid: 3a036b5ef4fdc87479d57a6098745b92, type: 3}
+  m_PrefabInstance: {fileID: 3579839476562579254}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3844591265650542956
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,6 +4925,14 @@ PrefabInstance:
       propertyPath: _sfxAudioSouce
       value: 
       objectReference: {fileID: 4032887133828979758}
+    - target: {fileID: 1654828181765929440, guid: e1d84f4026c54e34cbb690b51c63ccf8, type: 3}
+      propertyPath: _sfxAudioSource
+      value: 
+      objectReference: {fileID: 4032887133828979758}
+    - target: {fileID: 1654828181765929440, guid: e1d84f4026c54e34cbb690b51c63ccf8, type: 3}
+      propertyPath: _musicAudioSource
+      value: 
+      objectReference: {fileID: 3579839476562579255}
     - target: {fileID: 1654828181765929440, guid: e1d84f4026c54e34cbb690b51c63ccf8, type: 3}
       propertyPath: _audioData.Array.size
       value: 7
@@ -5614,6 +5671,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 884917285}
+  - {fileID: 1567367270}
   - {fileID: 1734461584}
   - {fileID: 681213948}
   - {fileID: 2796643140437853285}

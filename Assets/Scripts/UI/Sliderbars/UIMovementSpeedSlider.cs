@@ -3,7 +3,7 @@ using Game.Events;
 
 namespace Game.UI.Slidebars
 {
-    public class UIMovementSpeedSlider : UISlider
+    public class UIMovementSpeedSlider : UIPlayerSlider
     {           
         private float _currentSpeed;      
 
@@ -23,7 +23,6 @@ namespace Game.UI.Slidebars
 
         private void OnDestroy()
         {                      
-            //podria estar en base
             _slider.onValueChanged.RemoveAllListeners();
             UIEvents.OnSpeedSliderValueInitialized -= InitializeSpeed;
         }

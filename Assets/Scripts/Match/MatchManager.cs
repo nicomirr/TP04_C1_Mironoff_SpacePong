@@ -120,6 +120,7 @@ namespace Game.Match
 
             yield return new WaitForSeconds(_data.WinningDisplayTime);
 
+            UIEvents.RaiseChangeCursorVisibilityRequest(true);
             SceneTransitionEvents.RaiseSceneChangeRequested(_data.MainMenuScene);
         }
     }

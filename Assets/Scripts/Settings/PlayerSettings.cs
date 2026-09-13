@@ -6,9 +6,7 @@ using Game.Core;
 using Game.Data;
 
 namespace Game.Settings
-{
-    
-
+{    
     public class PlayerSettings : MonoBehaviour
     {
         private static PlayerSettings _instance;

@@ -3,7 +3,7 @@ using System;
 
 namespace Game.UI.Slidebars
 {
-    public class UIColorSlider : UISlider
+    public class UIColorSlider : UIPlayerSlider
     {
         private byte _currentChannel;
 

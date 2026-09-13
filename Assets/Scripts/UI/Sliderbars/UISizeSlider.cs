@@ -3,7 +3,7 @@ using Game.Events;
 
 namespace Game.UI.Slidebars
 {
-    public class UISizeSlider : UISlider
+    public class UISizeSlider : UIPlayerSlider
     {
         private float _currentScale;
 
