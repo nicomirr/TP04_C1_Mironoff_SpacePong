@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Spawnables;
+using Game.Core;
 
 namespace Game.Data
 {

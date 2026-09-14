@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Game.Events;
-using Game.Core;
 
 namespace Game.Inputs
 {

@@ -4,7 +4,7 @@ namespace Game.UI
 {
     public class UIExitButtonDisabler : MonoBehaviour
     {
-        void Start()
+        private void Start()
         {
 #if UNITY_WEBGL
         this.gameObject.SetActive(false);

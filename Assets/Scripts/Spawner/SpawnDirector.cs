@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Events;
-using Game.Spawnables;
+using Game.Core;
 using Game.Data;
 
 namespace Game.Spawner

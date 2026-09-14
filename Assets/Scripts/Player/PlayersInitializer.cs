@@ -1,6 +1,6 @@
-using Game.Player.Configuration;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using Game.Player.Configuration;
 
 namespace Game.Player
 {

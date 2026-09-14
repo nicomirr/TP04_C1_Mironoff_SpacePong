@@ -1,7 +1,7 @@
-using Game.Core;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using Game.Core;
 
 namespace Game.UI.Slidebars
 {

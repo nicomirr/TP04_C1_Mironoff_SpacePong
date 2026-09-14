@@ -416,13 +416,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29afd43a369dcea48906321595ff31d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIPausePanel
-  _onDisplayAlpha: 1
+  _data: {fileID: 11400000, guid: 461a8a4161f402c449d5a60298f10de8, type: 2}
   _btnPlay: {fileID: 1009319507096172104}
   _btnSettings: {fileID: 4303997262178823428}
   _btnCredits: {fileID: 5369047436556439653}
   _btnExit: {fileID: 1414460073819539863}
-  _sceneToLoad: {fileID: 0}
-  _mainMenuButton: {fileID: 0}
+  _sceneToLoad: {fileID: 11400000, guid: 7dc3506aa4346f1439280c7776ecdef6, type: 2}
+  _mainMenuButton: {fileID: 8669349986938258883}
 --- !u!222 &8756037910341002973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -469,7 +469,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6920624685372729013}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -672,10 +672,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.80353755, g: 0.8784314, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.65882355, g: 0.6539809, b: 0.015686255, a: 1}
-    m_PressedColor: {r: 0.8617522, g: 0.8784314, b: 0, a: 1}
-    m_SelectedColor: {r: 0.8690285, g: 0.8784314, b: 0, a: 1}
+    m_NormalColor: {r: 0.8784314, g: 0.6683195, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.65882355, g: 0.468816, b: 0.015686255, a: 1}
+    m_PressedColor: {r: 0.8784314, g: 0.71137565, b: 0, a: 1}
+    m_SelectedColor: {r: 0.8784314, g: 0.73144656, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -704,6 +704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2379104063369752321}
+  - component: {fileID: 7320882131711080332}
   - component: {fileID: 4365088391995467412}
   - component: {fileID: 7611397051864520920}
   - component: {fileID: 1414460073819539863}
@@ -733,6 +734,18 @@ RectTransform:
   m_AnchoredPosition: {x: 746.3508, y: -359.3}
   m_SizeDelta: {x: 41.0943, y: 37.7121}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &7320882131711080332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747168121965856347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b03c1745b4819f4a9e9c897d899c71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIExitButtonDisabler
 --- !u!222 &4365088391995467412
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -2629,7 +2629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba00474f83af394e9e6cc459348e650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIMainMenuPanel
-  _onDisplayAlpha: 1
   _btnPlay: {fileID: 8768650156027846445}
   _btnSettings: {fileID: 5800635169068233855}
   _btnCredits: {fileID: 1198410618593673624}

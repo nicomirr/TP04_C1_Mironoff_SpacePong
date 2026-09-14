@@ -6,7 +6,6 @@ using Game.Core;
 
 namespace Game.Player
 {
-    //DEJO ESTO SEPARADO?
     public class PlayerDefense : MonoBehaviour
     {
         [SerializeField] private GameObject _defenseBody;

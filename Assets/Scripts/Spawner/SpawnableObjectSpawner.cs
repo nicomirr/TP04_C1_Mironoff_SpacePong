@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Game.Spawnables;
+using Game.Core;
 
 namespace Game.Spawner
 {

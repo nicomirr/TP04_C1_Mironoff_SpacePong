@@ -1,8 +1,10 @@
-using UnityEngine;
-
-public enum ColorChannel
+namespace Game.UI
 {
-    Red, 
-    Green, 
-    Blue
+    public enum ColorChannel
+    {
+        Red,
+        Green,
+        Blue
+    }
 }
+

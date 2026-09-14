@@ -2,36 +2,40 @@ using UnityEngine;
 using UnityEngine.UI;
 using Game.Events;
 
-public class UIVolumeSlider : MonoBehaviour
+namespace Game.UI
 {
-    private Slider _slider;
-
-    private void Awake()
+    public class UIVolumeSlider : MonoBehaviour
     {
-        _slider = GetComponent<Slider>();
-        _slider.onValueChanged.AddListener(OnVolumeChanged);
+        private Slider _slider;
 
-        AudioEvents.OnInitializeVolume += InitializeSliderValue;
-    }
+        private void Awake()
+        {
+            _slider = GetComponent<Slider>();
+            _slider.onValueChanged.AddListener(OnVolumeChanged);
 
-    private void Start()
-    {
-        AudioEvents.RaiseInitializeVolumeRequest();
-    }
+            AudioEvents.OnInitializeVolume += InitializeSliderValue;
+        }
 
-    private void OnDestroy()
-    {
-        _slider.onValueChanged.RemoveAllListeners();
-        AudioEvents.OnInitializeVolume -= InitializeSliderValue;
-    }
+        private void Start()
+        {
+            AudioEvents.RaiseInitializeVolumeRequest();
+        }
 
-    private void InitializeSliderValue(float volume)
-    {
-        _slider.value = volume;
-    }
+        private void OnDestroy()
+        {
+            _slider.onValueChanged.RemoveAllListeners();
+            AudioEvents.OnInitializeVolume -= InitializeSliderValue;
+        }
 
-    private void OnVolumeChanged(float volume)
-    {
-        AudioEvents.RaiseVolumeChanged(volume);
+        private void InitializeSliderValue(float volume)
+        {
+            _slider.value = volume;
+        }
+
+        private void OnVolumeChanged(float volume)
+        {
+            AudioEvents.RaiseVolumeChanged(volume);
+        }
     }
 }
+

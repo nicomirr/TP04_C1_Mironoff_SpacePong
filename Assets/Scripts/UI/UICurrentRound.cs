@@ -2,28 +2,32 @@ using UnityEngine;
 using Game.Events;
 using TMPro;
 
-public class UICurrentRound : MonoBehaviour
+namespace Game.UI
 {
-    private TMP_Text _roundsText;
-
-    private void Awake()
+    public class UICurrentRound : MonoBehaviour
     {
-        _roundsText = GetComponent<TMP_Text>();
-    }
+        private TMP_Text _roundsText;
 
-    private void OnEnable()
-    {
-        MatchEvents.OnRoundStarted += UpdateRoundText;
-    }
+        private void Awake()
+        {
+            _roundsText = GetComponent<TMP_Text>();
+        }
 
-    private void OnDisable()
-    {
-        MatchEvents.OnRoundStarted -= UpdateRoundText;
-    }
+        private void OnEnable()
+        {
+            MatchEvents.OnRoundStarted += UpdateRoundText;
+        }
 
-    private void UpdateRoundText(int currentRound)
-    {
-        _roundsText.text = "ROUND " + currentRound.ToString();
-    }
+        private void OnDisable()
+        {
+            MatchEvents.OnRoundStarted -= UpdateRoundText;
+        }
 
+        private void UpdateRoundText(int currentRound)
+        {
+            _roundsText.text = "ROUND " + currentRound.ToString();
+        }
+
+    }
 }
+

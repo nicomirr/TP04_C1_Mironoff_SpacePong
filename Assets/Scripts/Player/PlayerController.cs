@@ -56,7 +56,7 @@ namespace Game.Player
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent<BallMarker>(out var _))
+            if (collision.gameObject.TryGetComponent<BallMarker>(out _))
             {
                 RandomizePaddleColor();
             }

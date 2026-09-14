@@ -3,13 +3,13 @@ using UnityEngine.UI;
 using Game.Core;
 using Game.UI.Slidebars;
 using Game.Events;
+using Game.Data;
 
 namespace Game.UI
 {
     public class UIPaddleColor : MonoBehaviour
     {
-        //Esto que se decida luego en cada panel de jugador, no en cada slider individual
-        [SerializeField] protected PlayerType _playerType;
+        [SerializeField] protected PlayerTypeConfigSo _data;
 
         [SerializeField] private UIColorSlider _redChannelSlider;
         [SerializeField] private UIColorSlider _greenChannelSlider;
@@ -34,7 +34,7 @@ namespace Game.UI
 
         private void Start()
         {
-            UIEvents.RaiseColorInitialValueRequested(_playerType);
+            UIEvents.RaiseColorInitialValueRequested(_data.Player);
         }
 
         private void OnDestroy()
@@ -54,7 +54,7 @@ namespace Game.UI
 
         public void UpdateColorAndChannels(PlayerType playerType, Color32 color)
         {
-            if (_playerType != playerType) return;
+            if (_data.Player != playerType) return;
 
             UpdateColor(color);
 
@@ -85,7 +85,7 @@ namespace Game.UI
         {
             _currentColor = color;
             _image.color = _currentColor;
-            PlayerEvents.RaisePlayerColorChangeRequested(_playerType, color);
+            PlayerEvents.RaisePlayerColorChangeRequested(_data.Player, color);
         }
 
 

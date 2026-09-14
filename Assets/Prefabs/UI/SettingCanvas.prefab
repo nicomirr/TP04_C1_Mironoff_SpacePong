@@ -6498,7 +6498,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &2271688498464051992
 MonoBehaviour:
@@ -7127,7 +7127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fad8e200ebe80da498f202fde03b8f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.UI.UIPanel
-  _onDisplayAlpha: 1
+  _data: {fileID: 11400000, guid: 461a8a4161f402c449d5a60298f10de8, type: 2}
 --- !u!222 &2022915045601736047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8309,7 +8309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a453f057a2efc0f438ac1fb17b9e2e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIPaddleColor
-  _playerType: 1
+  _data: {fileID: 11400000, guid: 99ad33b99c88488429776cbfaebd9c6b, type: 2}
   _redChannelSlider: {fileID: 8232374318740818343}
   _greenChannelSlider: {fileID: 7564386653148460625}
   _blueChannelSlider: {fileID: 4904273541869258394}
@@ -9325,7 +9325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a453f057a2efc0f438ac1fb17b9e2e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIPaddleColor
-  _playerType: 0
+  _data: {fileID: 11400000, guid: 994a50d7b4e4ba248a5abedbb5ada970, type: 2}
   _redChannelSlider: {fileID: 3285734207290706824}
   _greenChannelSlider: {fileID: 7696099565190344533}
   _blueChannelSlider: {fileID: 352760146973638563}

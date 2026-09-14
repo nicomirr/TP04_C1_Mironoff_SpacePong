@@ -1,9 +1,9 @@
 using UnityEngine;
+using System.Collections;
 using Game.Player;
 using Game.Core;
 using Game.Data;
 using Game.Events;
-using System.Collections;
 using Game.Markers;
 
 namespace Game.Ball

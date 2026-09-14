@@ -1,4 +1,4 @@
-namespace Game.Spawnables
+namespace Game.Core
 {
     public enum SpawnableObjectCategory
     {
