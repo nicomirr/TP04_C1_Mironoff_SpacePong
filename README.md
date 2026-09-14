@@ -3,7 +3,9 @@
  
  # SpacePong
  
- A pong reimagining with powerups, rotation, and four-dimentional movement set in space.
+SpacePong is a reimagining of the classic Pong formula, set in the depths of space. Move and rotate your paddle freely across four directions, collect power-ups, avoid obstacles, and adapt to an increasingly chaotic  arena where every match can quickly change.
+
+With fast-paced gameplay, dynamic mechanics, and a modern twist on the original concept, SpacePong turns a simple duel into a much more unpredictable battle for control of the ball.
  
  This is a game developed by a student from <a href="https://www.imagecampus.edu.ar/">Image Campus</a>
  
