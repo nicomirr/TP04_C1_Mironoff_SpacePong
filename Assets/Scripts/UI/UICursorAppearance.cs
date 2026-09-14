@@ -14,7 +14,7 @@ namespace Game.UI
 
         private void Start()
         {
-            Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.Auto);
+            SetCursorTexture();
         }
 
         private void OnDestroy()
@@ -25,8 +25,15 @@ namespace Game.UI
         private void ChangeCursorState(bool isVisible)
         {
             Cursor.visible = isVisible;
+
+            if (isVisible)
+                SetCursorTexture();
+        }
+
+        private void SetCursorTexture()
+        {
+            Cursor.SetCursor(_cursorTexture, Vector2.zero, CursorMode.Auto);
         }
     }
-
 }
 
