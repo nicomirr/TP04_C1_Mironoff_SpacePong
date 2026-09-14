@@ -37,5 +37,5 @@
   
  ## Links
  
- Download it from itch.io: [https://nicomironoff.itch.io/last-standing
+ Download it from itch.io: [https://nicomironoff.itch.io/spacepong
 ](https://nicomironoff.itch.io/spacepong)
