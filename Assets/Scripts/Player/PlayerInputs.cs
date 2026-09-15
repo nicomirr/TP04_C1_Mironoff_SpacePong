@@ -9,16 +9,14 @@ namespace Game.Player
         private readonly PlayerType _playerType;
         public PlayerType PlayerType => _playerType;
 
+        public Vector2 MovementDirection => _moveAction.ReadValue<Vector2>();
+        public bool ChangeColorReleased => _changeColorAction.WasReleasedThisFrame();
+
         private readonly GameControls _playerControls;        
 
         private InputAction _moveAction; 
-        public Vector2 MovementDirection => _moveAction.ReadValue<Vector2>();
-
         private InputAction _rotateAction; 
         private InputAction _changeColorAction; 
-
-        public bool ChangeColorReleased => _changeColorAction.WasReleasedThisFrame();
-
         
         public PlayerInputs(PlayerType playerType)
         {
