@@ -20,8 +20,6 @@ namespace Game.Player
 
         private bool _movementLimitReached;
 
-        private Rigidbody2D _rb;
-
         private void OnEnable()
         {
             PlayerEvents.OnPlayerMovementSpeedUpdated += TryChangeMovementSpeed;
@@ -69,21 +67,21 @@ namespace Game.Player
 
         public void Initialize(PlayerConfigurationSo configuration)
         {            
-            _rb = GetComponent<Rigidbody2D>();
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
             _playerInputs = new PlayerInputs(configuration.PlayerType);
             
             ViewportCheckLimits checkLimits = new ViewportCheckLimits(configuration.ViewportLimits);
-            _movement = new Movement(_rb, checkLimits);
+            _movement = new Movement(rb, checkLimits);
             
-            _rotation = new Rotation(_rb, configuration.Rotation);
+            _rotation = new Rotation(rb, configuration.Rotation);
 
             _colorChanger = new ColorChanger(GetComponentInChildren<SpriteRenderer>(), 
                 configuration.CollidingWithlimitsColor);
 
             _paddleScaler = new PaddleScaler(GetComponentInChildren<PaddleVisualMarker>().transform);
 
-            _rb.position = configuration.InitialPosition;
+            rb.position = configuration.InitialPosition;
         }
 
 
