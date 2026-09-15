@@ -25,14 +25,10 @@ namespace Game.Player
             _playerControls = new GameControls();
             _playerType = playerType;
 
-            InitializePlayerInputs();
-
-            _moveAction.Enable();
-            _rotateAction.Enable();
-            _changeColorAction.Enable();
+            EnablePlayerInputs();            
         }
 
-        private void InitializePlayerInputs()
+        private void EnablePlayerInputs()
         {
             switch (_playerType)
             {
@@ -49,6 +45,17 @@ namespace Game.Player
                     break;
 
             }
+
+            _moveAction.Enable();
+            _rotateAction.Enable();
+            _changeColorAction.Enable();
+        }        
+
+        public bool RotationPressed(out float value)
+        {
+            value = _rotateAction.ReadValue<float>();
+
+            return _rotateAction.WasPressedThisFrame();
         }
 
         public void Deinitialize()
@@ -61,15 +68,6 @@ namespace Game.Player
             _playerControls.Dispose();
         }
 
-        public bool RotationPressed(out float value)
-        {
-            value = _rotateAction.ReadValue<float>();
-
-            return _rotateAction.WasPressedThisFrame();
-        }
-
-             
-                
     }
 }
 
