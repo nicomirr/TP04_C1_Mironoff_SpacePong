@@ -25,11 +25,30 @@ namespace Game.Player
             _playerControls = new GameControls();
             _playerType = playerType;
 
-            EnablePlayerInputs();
+            InitializePlayerInputs();
 
             _moveAction.Enable();
             _rotateAction.Enable();
             _changeColorAction.Enable();
+        }
+
+        private void InitializePlayerInputs()
+        {
+            switch (_playerType)
+            {
+                case PlayerType.PlayerOne:
+                    _moveAction = _playerControls.PlayerOne.Move;
+                    _rotateAction = _playerControls.PlayerOne.Rotate;
+                    _changeColorAction = _playerControls.PlayerOne.ChangeColor;
+                    break;
+
+                case PlayerType.PlayerTwo:
+                    _moveAction = _playerControls.PlayerTwo.Move;
+                    _rotateAction = _playerControls.PlayerTwo.Rotate;
+                    _changeColorAction = _playerControls.PlayerTwo.ChangeColor;
+                    break;
+
+            }
         }
 
         public void Deinitialize()
@@ -49,24 +68,7 @@ namespace Game.Player
             return _rotateAction.WasPressedThisFrame();
         }
 
-        private void EnablePlayerInputs()
-        {
-            switch (_playerType)
-            {
-                case PlayerType.PlayerOne:
-                    _moveAction = _playerControls.PlayerOne.Move;
-                    _rotateAction = _playerControls.PlayerOne.Rotate;
-                    _changeColorAction = _playerControls.PlayerOne.ChangeColor;
-                    break;
-
-                case PlayerType.PlayerTwo:
-                    _moveAction = _playerControls.PlayerTwo.Move;
-                    _rotateAction = _playerControls.PlayerTwo.Rotate;
-                    _changeColorAction = _playerControls.PlayerTwo.ChangeColor;
-                    break;
-
-            }
-        }       
+             
                 
     }
 }
